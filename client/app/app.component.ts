@@ -18,5 +18,4 @@ export class AppComponent implements AfterViewChecked {
     this.cdr.detectChanges();
   }
 
-
 }

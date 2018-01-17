@@ -28,14 +28,21 @@ abstract class BaseCtrl {
   insert = (req, res) => {
     req.body['created_by'] = _.get(req, 'user.user._id', null);
     const obj = new this.model(req.body);
+
     obj.save((err, item) => {
       // 11000 is the code for duplicate key error
       if (err && err.code === 11000) {
         res.sendStatus(400);
       }
+      if (err && err.errors) {
+        const errObj = this.makeError(err);
+        res.sendStatus(errObj[0]);
+      }
+
       if (err) {
         return console.error(err);
       }
+
       res.status(200).json(item);
     });
   };
@@ -68,6 +75,27 @@ abstract class BaseCtrl {
       }
       res.sendStatus(200);
     });
+  };
+
+  makeError = (err) => {
+    let msg = 'Error';
+    let errCode = 400;
+    if (err && err.errors) {
+      // mongoose error
+      // console.log('Error Inserting New Data');
+      Object.keys(err.errors).forEach(function (key) {
+        const errObj = err.errors[key];
+        // console.log(errObj);
+        errCode = errObj['properties']['errorCode'] || erroCode;
+        if (errObj.name === 'ValidatorError') {
+          msg += ' - ' + errObj.message;
+        }
+      });
+    } else {
+      // db error etc...
+
+    }
+    return [errCode, msg];
   };
 }
 

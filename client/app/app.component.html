@@ -18,7 +18,7 @@
         <i class="fa fa-user-plus"></i> Register
       </a>
       <a routerLink="/account/profile" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
+        <i class="fa fa-user"></i> Account ({{auth.currentUser.initials}})
       </a>
       <a routerLink="/account/admin" class="nav-item nav-link" routerLinkActive="active"
          *ngIf="auth.loggedIn && auth.isAdmin">

@@ -63,15 +63,15 @@ mongodb
 
 app.locals.memoryCache = cacheManager.caching({ store: 'memory', max: 100, ttl: 10/*seconds*/ });
 
-app.locals.diskCache = cacheManager.caching({
-  store: fsStore,
-  options: {
-    ttl: 60 * 60 /* seconds */,
-    maxsize: 1000 * 1000 * 1000 /* max size in bytes on disk */,
-    path: 'diskcache',
-    preventfill: true,
-  },
-});
+// app.locals.diskCache = cacheManager.caching({
+//   store: fsStore,
+//   options: {
+//     ttl: 60 * 60 /* seconds */,
+//     maxsize: 1000 * 1000 * 1000 /* max size in bytes on disk */,
+//     path: 'diskcache',
+//     preventfill: true,
+//   },
+// });
 
 
 export { app };

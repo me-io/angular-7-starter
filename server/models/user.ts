@@ -2,6 +2,12 @@ import * as bcrypt from 'bcryptjs';
 import { Model, model, Schema } from 'mongoose';
 import { IUserDocument } from '../interfaces/IUserDocument';
 import * as timestamps from 'mongoose-timestamp';
+import * as _ from 'lodash';
+
+const validateRole = (value) => {
+  const validArr = ['super_admin', 'admin', 'super_moderator', 'moderator', 'support_admin', 'support_agent', 'user'];
+  return _.includes(validArr, value);
+};
 
 export interface IUser extends IUserDocument {
   comparePassword(password: string, callback: object): boolean;
@@ -12,10 +18,18 @@ export interface IUserModel extends Model<IUser> {
 }
 
 export const userSchema: Schema = new Schema({
-  username: { type: String },
+  firstname: { type: String },
+  lastname: { type: String },
+  phonenumber: { type: String },
+  address1: { type: String },
+  address2: { type: String },
+  city: { type: String },
+  country: { type: String },
+  zipcode: { type: String },
+  postalcode: { type: String },
   email: { type: String, unique: true, lowercase: true, trim: true },
   password: { type: String },
-  role: { type: String },
+  role: { type: String, default: 'user', validate: [{ validator: validateRole, msg: 'incorrect role data', errorCode: 422 }] },
 });
 
 // Before saving the user, hash the password
@@ -55,7 +69,9 @@ userSchema.static('hashPassword', (password: string): string => {
 // Omit the password when returning a user
 userSchema.set('toJSON', {
   transform: function (doc, ret, options) {
+    delete ret.updatedAt;
     delete ret.password;
+    // delete ret.role;
     return ret;
   },
 });
