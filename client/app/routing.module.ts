@@ -5,6 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: AboutComponent },
+  { path: 'group', loadChildren: './group/group.module#GroupModule' },
   { path: 'contact', loadChildren: './contact/contact.module#ContactModule' },
   { path: 'account', loadChildren: './account/account.module#AccountModule' },
   { path: 'notfound', component: NotFoundComponent },

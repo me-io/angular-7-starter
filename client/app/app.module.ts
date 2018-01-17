@@ -11,19 +11,20 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { SafeHtmlPipe } from './util/pipe/safe-html.pipe';
 import { DynamicModule } from './dynamic/dynamic.module';
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     NotFoundComponent,
-    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     routing,
     SharedModule,
     DynamicModule,

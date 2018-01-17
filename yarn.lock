@@ -162,6 +162,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/service-worker@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-5.2.0.tgz#fec7ac1e480159063914f5a55191b8f2e6ede65f"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angularclass/hmr@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@angularclass/hmr/-/hmr-2.1.3.tgz#34e658ed3da37f23b0a200e2da5a89be92bb209f"
