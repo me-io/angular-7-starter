@@ -44,7 +44,12 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.loggedIn = false;
+    this.isSuperAdmin = false;
     this.isAdmin = false;
+    this.isSuperMod = false;
+    this.isMod = false;
+    this.isSupportAdmin = false;
+    this.isSupportAgent = false;
     this.currentUser = new User();
     this.router.navigate(['/']);
   }
@@ -54,7 +59,6 @@ export class AuthService {
   }
 
   getInitials = (name) => {
-    console.log(name);
     const parts = name.split(' ');
     let initials = '';
     for (let i = 0; i < parts.length; i++) {
@@ -65,6 +69,32 @@ export class AuthService {
     return initials.toUpperCase();
   };
 
+  setUserRole = (role) => {
+
+    switch (role) {
+      case 'super_admin':
+        this.isSuperAdmin = true;
+        break;
+      case 'admin':
+        this.isAdmin = true;
+        break;
+      case 'super_moderator':
+        this.isSuperMod = true;
+        break;
+      case 'moderator':
+        this.isMod = true;
+        break;
+      case 'support_admin':
+        this.isSupportAdmin = true;
+        break;
+      case 'support_agent':
+        this.isSupportAgent = true;
+        break;
+      default:
+
+    }
+  };
+
   setCurrentUser(decodedUser) {
     this.loggedIn = true;
     this.currentUser = decodedUser;
@@ -73,15 +103,7 @@ export class AuthService {
 
     this.currentUser.role = decodedUser.role;
 
-    decodedUser.role === 'super_admin' ? this.isSuperAdmin = true : this.isSuperAdmin = false;
-    decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
-
-    decodedUser.role === 'super_moderator' ? this.isSuperMod = true : this.isSuperMod = false;
-    decodedUser.role === 'moderator' ? this.isMod = true : this.isMod = false;
-
-    decodedUser.role === 'support_admin' ? this.isSupportAdmin = true : this.isSupportAdmin = false;
-    decodedUser.role === 'support_agent' ? this.isSupportAgent = true : this.isSupportAgent = false;
-
+    this.setUserRole(decodedUser.role);
     delete decodedUser.role;
   }
 

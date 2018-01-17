@@ -5,11 +5,11 @@
       <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         <i class="fa fa-home"></i> Home
       </a>
-      <a routerLink="/contact" class="nav-item nav-link" routerLinkActive="active">
-        <i class="fa fa-list"></i> Contacts
-      </a>
       <a routerLink="/group" class="nav-item nav-link" routerLinkActive="active">
         <i class="fa fa-list"></i> Groups
+      </a>
+      <a routerLink="/contact" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-list"></i> Contacts
       </a>
       <a routerLink="/account/login" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
         <i class="fa fa-sign-in"></i> Login
@@ -20,9 +20,13 @@
       <a routerLink="/account/profile" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
         <i class="fa fa-user"></i> Account ({{auth.currentUser.initials}})
       </a>
-      <a routerLink="/account/admin" class="nav-item nav-link" routerLinkActive="active"
+      <a routerLink="/account/admin" class="nav-item nav-link lef" routerLinkActive="active"
          *ngIf="auth.loggedIn && auth.isAdmin">
-        <i class="fa fa-lock"></i> Admin
+        <i class="fa fa-lock"></i> Admin CP
+      </a>
+      <a routerLink="/account/admin" class="nav-item nav-link" routerLinkActive="active"
+         *ngIf="auth.loggedIn && auth.isMod">
+        <i class="fa fa-lock"></i> Mod CP
       </a>
       <a routerLink="/account/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
         <i class="fa fa-sign-out"></i> Logout

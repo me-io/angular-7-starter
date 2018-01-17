@@ -1,10 +1,11 @@
-abstract class BaseCtrl {
+import BaseCtrl from './base';
 
-  abstract model: any;
+
+abstract class BaseUserCtrl extends BaseCtrl {
 
   // Get all
   getAll = (req, res) => {
-    this.model.find({}, (err, docs) => {
+    this.model.find({ created_by: req.loggedInUserId }, (err, docs) => {
       if (err) {
         return console.error(err);
       }
@@ -14,7 +15,7 @@ abstract class BaseCtrl {
 
   // Count all
   count = (req, res) => {
-    this.model.count((err, count) => {
+    this.model.count({ created_by: req.loggedInUserId }, (err, count) => {
       if (err) {
         return console.error(err);
       }
@@ -24,6 +25,7 @@ abstract class BaseCtrl {
 
   // Insert
   insert = (req, res) => {
+    req.body['created_by'] = req.loggedInUserId;
     const obj = new this.model(req.body);
 
     obj.save((err, item) => {
@@ -46,7 +48,7 @@ abstract class BaseCtrl {
 
   // Get by id
   get = (req, res) => {
-    this.model.findOne({ _id: req.params.id }, (err, obj) => {
+    this.model.findOne({ _id: req.params.id, created_by: req.loggedInUserId }, (err, obj) => {
       if (err) {
         return console.error(err);
       }
@@ -56,7 +58,7 @@ abstract class BaseCtrl {
 
   // Update by id
   update = (req, res) => {
-    this.model.findOneAndUpdate({ _id: req.params.id }, req.body, (err) => {
+    this.model.findOneAndUpdate({ _id: req.params.id, created_by: req.loggedInUserId }, req.body, (err) => {
       if (err) {
         return console.error(err);
       }
@@ -66,7 +68,7 @@ abstract class BaseCtrl {
 
   // Delete by id
   delete = (req, res) => {
-    this.model.findOneAndRemove({ _id: req.params.id }, (err) => {
+    this.model.findOneAndRemove({ _id: req.params.id, created_by: req.loggedInUserId }, (err) => {
       if (err) {
         return console.error(err);
       }
@@ -96,4 +98,4 @@ abstract class BaseCtrl {
   };
 }
 
-export default BaseCtrl;
+export default BaseUserCtrl;

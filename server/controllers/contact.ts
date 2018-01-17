@@ -1,6 +1,6 @@
 import Contact from '../models/contact';
-import BaseCtrl from './base';
+import BaseUserCtrl from './base.user';
 
-export default class ContactCtrl extends BaseCtrl {
+export default class ContactCtrl extends BaseUserCtrl {
   model = Contact;
 }

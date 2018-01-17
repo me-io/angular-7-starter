@@ -6,7 +6,7 @@ import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 import * as cacheManager from 'cache-manager';
-import * as fsStore from 'cache-manager-fs';
+import * as _ from 'lodash';
 
 import setRoutes from './routes';
 
@@ -26,6 +26,11 @@ app.use(jwt({ secret: process.env.SECRET_TOKEN })
       ],
     },
   ));
+
+app.use((req, res, next) => {
+  req.loggedInUserId = _.get(req, 'user.user._id', null);
+  next();
+});
 
 
 let mongodbURI;
