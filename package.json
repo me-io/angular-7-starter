@@ -47,6 +47,7 @@
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.13.9",
+    "mongoose-timestamp": "^0.6.0",
     "morgan": "^1.9.0",
     "qs": "^6.5.1",
     "rxjs": "^5.5.6",

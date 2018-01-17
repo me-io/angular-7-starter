@@ -1,6 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import { Model, model, Schema } from 'mongoose';
 import { IUserDocument } from '../interfaces/IUserDocument';
+import * as timestamps from 'mongoose-timestamp';
 
 export interface IUser extends IUserDocument {
   comparePassword(password: string, callback: object): boolean;
@@ -58,6 +59,8 @@ userSchema.set('toJSON', {
     return ret;
   },
 });
+
+userSchema.plugin(timestamps);
 
 export const User: IUserModel = model<IUser, IUserModel>('User', userSchema);
 

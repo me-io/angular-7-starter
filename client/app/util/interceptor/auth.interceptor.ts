@@ -7,8 +7,6 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {
-  }
 
   getAuthorizationHeader() {
     const token = localStorage.getItem('token');
@@ -20,7 +18,10 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log('intercepted request ... ');
     const authHeader = this.getAuthorizationHeader();
     // Clone the request to add the new header.
-    const authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + authHeader) });
+    let authReq = req;
+    if (authHeader) {
+      authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + authHeader) });
+    }
 
     console.log('Sending request with new header now ...');
 

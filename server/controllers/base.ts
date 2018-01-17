@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 abstract class BaseCtrl {
 
   abstract model: any;
@@ -24,6 +26,7 @@ abstract class BaseCtrl {
 
   // Insert
   insert = (req, res) => {
+    req.body['created_by'] = _.get(req, 'user.user._id', null);
     const obj = new this.model(req.body);
     obj.save((err, item) => {
       // 11000 is the code for duplicate key error
