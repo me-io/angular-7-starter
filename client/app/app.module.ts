@@ -1,0 +1,78 @@
+import { ApplicationRef, Injector, NgModule, PlatformRef } from '@angular/core';
+
+import { HttpClientModule } from '@angular/common/http';
+import { routing } from './routing.module';
+import { SharedModule } from './shared/shared.module';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
+import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+import { AppComponent } from './app.component';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { SafeHtmlPipe } from './util/pipe/safe-html.pipe';
+import { DynamicModule } from './dynamic/dynamic.module';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    NotFoundComponent,
+    SafeHtmlPipe,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    routing,
+    SharedModule,
+    DynamicModule,
+  ],
+  providers: [
+    // {
+    //   provide: Http,
+    //   useFactory: (backend: XHRBackend, options: RequestOptions) => {
+    //     return new HttpService(backend, options);
+    //   },
+    //   deps: [XHRBackend, RequestOptions],
+    // },
+    // { provide: DomSanitizer, useClass: DomSanitizerImpl },
+    // NO_SANITIZATION_PROVIDERS,
+    // { provide: DomSanitizer, useClass: DomSanitizerEx },
+    // { provide: DomSanitizer, useClass: NoSanitizationService },
+    // { provide: ElementSchemaRegistry, useClass: CustomDomElementSchemaRegistry },
+    HttpClientModule,
+    AuthService,
+    AuthGuardLogin,
+    AuthGuardAdmin,
+    UserService,
+  ],
+  // schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [
+    AppComponent,
+  ],
+})
+
+export class AppModule {
+  /**
+   * Allows for retrieving singletons using `AppModule.injector.get(MyService)`
+   * (whereas `ReflectiveInjector.resolveAndCreate(MyService)` would create a
+   * new instance of the service).
+   */
+  static injector: Injector;
+
+  constructor(public applicationRef: ApplicationRef,
+              platformRef: PlatformRef,
+              injector: Injector) {
+
+    // AppModule.injector = injector;
+    // const parser: DomSanitizer = injector.get(DomSanitizer);
+    //
+    //
+    // console.log(applicationRef);
+    // console.log(platformRef);
+    // console.log(parser);
+  }
+
+}
+

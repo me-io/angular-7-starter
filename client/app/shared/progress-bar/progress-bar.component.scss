@@ -1,0 +1,33 @@
+
+div.progress_bar_bg {
+  //height: 20px;
+  //width: 100px;
+  border: solid thin rgba(255, 255, 255, 0);
+  background-color: rgba(236, 236, 236, 0.83);
+  display: inline-block;
+}
+
+div.progress_bar_fg {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  //height: 20px;
+  //width:70px;
+  //border: solid thin black;
+  border: solid thin rgba(255, 255, 255, 0);
+  background-color: #bcd8ff;
+  display: inline-block;
+}
+
+span.progress_bar_st {
+  display: block;
+  margin: -19px 0 0 0;
+  padding: 0;
+  font-size: 10px;
+  position: relative;
+  //width: 100px;
+  text-align: right;
+  color: #000;
+}

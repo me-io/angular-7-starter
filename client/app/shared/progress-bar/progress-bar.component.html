@@ -1,0 +1,6 @@
+<div class="progress_bar_bg" [ngStyle]="{'width': len + 'px','height':h+ 'px'}">
+  <div>
+    <div [ngStyle]="{'width': curr + '%', 'height':h+ 'px'}" class="progress_bar_fg"></div>
+    <span class="progress_bar_st" [ngStyle]="{'width': len + 'px'}">{{ curr }}</span>
+  </div>
+</div>
