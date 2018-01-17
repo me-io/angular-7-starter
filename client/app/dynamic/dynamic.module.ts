@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { AppHtmlOutletDirective } from './directive/html-outlet.directive';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
   ],
   exports: [
     // Shared Modules
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     // Shared Components
     AppHtmlOutletDirective,
   ],
