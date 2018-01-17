@@ -17,26 +17,38 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(morgan('dev'));
-mongoose.connect(process.env.MONGODB_URI + process.env.MONGODB_DB, { useMongoClient: true });
-const db = mongoose.connection;
+let mongodbURI;
+if (process.env.NODE_ENV === 'test') {
+  mongodbURI = process.env.MONGODB_TEST_URI + process.env.MONGODB_TEST_DB;
+} else {
+  mongodbURI = process.env.MONGODB_URI + process.env.MONGODB_DB;
+  app.use(morgan('dev'));
+}
+
 (<any>mongoose).Promise = global.Promise;
+const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
+mongodb
+  .then(() => {
+    console.log('Connected to MongoDB on', mongodbURI);
 
-  setRoutes(app);
+    setRoutes(app);
 
-  app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    app.get('/*', function (req, res) {
+      res.sendFile(path.join(__dirname, '../public/index.html'));
+    });
+
+    if (!module.parent) {
+      app.listen(app.get('port'), () => {
+        console.log('Angular Full Stack listening on port ' + app.get('port'));
+      });
+    }
+
+  })
+  .catch((err) => {
+    console.error(err);
   });
 
-  app.listen(app.get('port'), () => {
-    console.log('Angular Full Stack listening on port ' + app.get('port'));
-  });
-
-});
 
 app.locals.memoryCache = cacheManager.caching({ store: 'memory', max: 100, ttl: 10/*seconds*/ });
 
