@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { ContactService } from './services/contact.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
