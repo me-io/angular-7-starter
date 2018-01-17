@@ -3,6 +3,8 @@ import { GroupComponent } from './group.component';
 import { GroupService } from './services/group.service';
 import { SharedModule } from '../shared/shared.module';
 import { routing } from './group.route';
+import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,11 @@ import { routing } from './group.route';
   ],
   providers: [
     GroupService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
   exports: [
     GroupComponent,

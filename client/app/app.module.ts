@@ -1,6 +1,6 @@
 import { ApplicationRef, Injector, NgModule, PlatformRef } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { routing } from './routing.module';
 import { SharedModule } from './shared/shared.module';
 import { UserService } from './services/user.service';
@@ -14,6 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthInterceptor } from './util/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     // { provide: DomSanitizer, useClass: DomSanitizerEx },
     // { provide: DomSanitizer, useClass: NoSanitizationService },
     // { provide: ElementSchemaRegistry, useClass: CustomDomElementSchemaRegistry },
-    HttpClientModule,
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
     UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
   // schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [

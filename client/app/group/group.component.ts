@@ -19,8 +19,7 @@ export class GroupComponent implements OnInit {
 
   addGroupForm: FormGroup;
   name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
+  ring_tone = new FormControl('', Validators.required);
 
   constructor(private groupService: GroupService,
               private formBuilder: FormBuilder,
@@ -31,8 +30,7 @@ export class GroupComponent implements OnInit {
     this.getGroups();
     this.addGroupForm = this.formBuilder.group({
       name: this.name,
-      age: this.age,
-      weight: this.weight,
+      ring_tone: this.ring_tone,
     });
   }
 

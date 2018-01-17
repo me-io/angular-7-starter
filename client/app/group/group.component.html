@@ -9,8 +9,7 @@
       <thead class="thead-default">
       <tr>
         <th>Name</th>
-        <th>Age</th>
-        <th>Weight</th>
+        <th>Ring_tone</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -22,8 +21,7 @@
       <tbody *ngIf="!isEditing">
       <tr *ngFor="let group of groupArr">
         <td>{{group.name}}</td>
-        <td>{{group.age}}</td>
-        <td>{{group.weight}}</td>
+        <td>{{group.ring_tone}}</td>
         <td>
           <button class="btn btn-sm btn-warning" (click)="enableEditing(group)"><i class="fa fa-pencil"></i> Edit
           </button>
@@ -41,12 +39,9 @@
                      required>
             </div>
             <div class="form-group">
-              <input class="form-control" type="number" name="age" [(ngModel)]="group.age" placeholder="Age" min="0"
+              <input class="form-control" type="number" name="text" [(ngModel)]="group.ring_tone" placeholder="ring_tone"
+                     min="0"
                      required>
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="number" name="weight" [(ngModel)]="group.weight" placeholder="Weight"
-                     step="any" min="0" required>
             </div>
             <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i
               class="fa fa-floppy-o"></i> Save
@@ -68,10 +63,7 @@
         <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
       </div>
       <div class="form-group">
-        <input class="form-control" type="number" name="age" formControlName="age" placeholder="Age" min="0">
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any"
+        <input class="form-control" type="text" name="ring_tone" formControlName="ring_tone" placeholder="ring_tone"
                min="0">
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!addGroupForm.valid"><i class="fa fa-floppy-o"></i>

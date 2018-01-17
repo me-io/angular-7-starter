@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
+import * as jwt from 'express-jwt';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
@@ -16,6 +17,7 @@ app.set('port', (process.env.PORT || 3000));
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(jwt({ secret: process.env.SECRET_TOKEN }).unless({ path: ['/api/login'] }));
 
 let mongodbURI;
 if (process.env.NODE_ENV === 'test') {

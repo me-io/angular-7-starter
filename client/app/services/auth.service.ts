@@ -44,9 +44,7 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-
   decodeUserFromToken(token) {
-
     return this.jwtHelper.decodeToken(token).user;
   }
 

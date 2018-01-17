@@ -6,7 +6,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { CommonModule } from '@angular/common';
 import { TestComponent } from './test/test.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -35,6 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     ToastComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
 })
 export class SharedModule {
