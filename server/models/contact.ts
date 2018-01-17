@@ -5,6 +5,7 @@ const contactSchema = new mongoose.Schema({
   name: String,
   weight: Number,
   age: Number,
+  od : mongoose.Schema.Types.Mixed,
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

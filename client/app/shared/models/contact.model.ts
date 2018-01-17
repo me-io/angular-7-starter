@@ -3,4 +3,5 @@ export class Contact {
   name?: string;
   weight?: number;
   age?: number;
+  od: any;
 }
