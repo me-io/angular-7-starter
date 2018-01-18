@@ -1,0 +1,40 @@
+{
+  "name": "tajawal/app-boilerplate",
+  "license": "proprietary",
+  "version": "1.0.0",
+  "require": {
+    "php": ">=7.0",
+    "slim/slim": "~3",
+    "slim/php-view": "~2",
+    "catfan/Medoo": "~1",
+    "symfony/yaml": "~4",
+    "vlucas/valitron": "~1",
+    "ramsey/uuid": "~3",
+    "illuminate/database": "~5",
+    "robmorgan/phinx": "~0",
+    "lcobucci/jwt": "~3",
+    "swiftmailer/swiftmailer": "~6",
+    "monolog/monolog": "~1",
+    "nesbot/carbon": "^1.22",
+    "slim/flash": "^0.4.0",
+    "mikehaertl/phpwkhtmltopdf": "^2.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6",
+    "fzaninotto/faker": "~1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "start": "php -S localhost:3000 -t public public/index.php",
+    "test": "./phpunit"
+  }
+}
