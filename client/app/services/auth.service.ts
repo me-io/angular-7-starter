@@ -27,13 +27,13 @@ export class AuthService {
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
       this.setCurrentUser(decodedUser);
+
     }
   }
 
   login(emailAndPassword) {
     return this.userService.login(emailAndPassword).map(
       res => {
-        console.log(res);
         if (res.token) {
           localStorage.setItem('token', res.token);
           const decodedUser = this.decodeUserFromToken(res.token);
@@ -61,7 +61,7 @@ export class AuthService {
 
   decodeUserFromToken(token) {
     try {
-      return this.jwtHelper.decodeToken(token).user;
+      return this.jwtHelper.decodeToken(token).data;
     } catch (err) {
       this.logout();
       return {};
