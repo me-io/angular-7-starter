@@ -11,11 +11,11 @@ export class UserService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>('/api/register', user);
+    return this.http.post<User>('/api/user/register', user);
   }
 
   login(credentials): Observable<any> {
-    return this.http.post<any>('/api/login', credentials);
+    return this.http.post<any>('/api/user/login', credentials);
   }
 
   getUsers(): Observable<User[]> {

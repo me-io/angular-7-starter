@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Acme\Helpers;
+namespace App\Util\Helpers;
 
 class Str
 {

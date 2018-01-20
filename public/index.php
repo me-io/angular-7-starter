@@ -13,9 +13,10 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $settings = require __DIR__ . '/../app/bootstrap/settings.php';
 
-$app = new \Slim\App($settings);
+$app = \App\AppContainer::getInstance($settings);
 
 $container = $app->getContainer();
+
 /** @var \Slim\Http\Request $request */
 $request = $container['request'];
 /** @var \Slim\Http\Uri $uri */
@@ -28,12 +29,9 @@ define('__APPDIR__', __DIR__);
 
 define('__ISAPI__', (bool)stristr($uri->getPath(), '/api/'));
 
-$settings = require __DIR__ . '/../app/bootstrap/dependencies.php';
-
-$routes = glob(__DIR__ . '/../app/Routes/*.php');
-foreach ($routes as $route) {
-    require $route;
-}
+require __DIR__ . '/../app/bootstrap/dep.base.php';
+require __DIR__ . '/../app/bootstrap/middlewares.php';
+require __DIR__ . '/../app/bootstrap/routes.php';
 
 try {
     $app->run();

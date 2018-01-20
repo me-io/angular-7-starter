@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Acme\Helpers;
+namespace App\Util\Helpers;
 
 use App\Exceptions\GenericException;
 use Swift_Mailer;
