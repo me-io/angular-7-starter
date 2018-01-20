@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthService } from '../../services/auth.service';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { ErrFmt } from '../../util/helpers/err.helper';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.loginForm.value).subscribe(
       res => this.router.navigate(['/']),
-      error => this.toast.setMessage('invalid email or password!', 'danger'),
+      error => {
+        this.toast.setMessage(ErrFmt(error, 'invalid email or password'), 'danger');
+      },
     );
   }
 

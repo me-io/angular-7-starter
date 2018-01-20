@@ -33,10 +33,15 @@ export class AuthService {
   login(emailAndPassword) {
     return this.userService.login(emailAndPassword).map(
       res => {
-        localStorage.setItem('token', res.token);
-        const decodedUser = this.decodeUserFromToken(res.token);
-        this.setCurrentUser(decodedUser);
-        return this.loggedIn;
+        console.log(res);
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          const decodedUser = this.decodeUserFromToken(res.token);
+          this.setCurrentUser(decodedUser);
+          return this.loggedIn;
+        } else {
+          throw new Error('Invalid Credentials');
+        }
       },
     );
   }
@@ -55,10 +60,15 @@ export class AuthService {
   }
 
   decodeUserFromToken(token) {
-    return this.jwtHelper.decodeToken(token).user;
+    try {
+      return this.jwtHelper.decodeToken(token).user;
+    } catch (err) {
+      this.logout();
+      return {};
+    }
   }
 
-  getInitials = (name) => {
+  getInitials = (name = '') => {
     const parts = name.split(' ');
     let initials = '';
     for (let i = 0; i < parts.length; i++) {
@@ -95,7 +105,7 @@ export class AuthService {
     }
   };
 
-  setCurrentUser(decodedUser) {
+  setCurrentUser(decodedUser: any = {}) {
     this.loggedIn = true;
     this.currentUser = decodedUser;
     const fullName = (decodedUser.firstname || '') + ' ' + (decodedUser.lastname || '');

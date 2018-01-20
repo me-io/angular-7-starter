@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { ContactService } from './services/contact.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { ErrFmt } from '../util/helpers/err.helper';
 
 @Component({
   selector: 'app-contact',
@@ -39,7 +40,7 @@ export class ContactComponent implements OnInit {
   getContacts() {
     this.contactService.getContacts().subscribe(
       data => this.contactArr = data,
-      error => console.log(error),
+      error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
     );
   }

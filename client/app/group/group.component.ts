@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { GroupService } from './services/group.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { ErrFmt } from '../util/helpers/err.helper';
 
 @Component({
   selector: 'app-group',
@@ -37,7 +38,7 @@ export class GroupComponent implements OnInit {
   getGroups() {
     this.groupService.getGroups().subscribe(
       data => this.groupArr = data,
-      error => console.log(error),
+      error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
     );
   }

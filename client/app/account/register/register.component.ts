@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { ErrFmt } from '../../util/helpers/err.helper';
 
 @Component({
   selector: 'app-register',
@@ -48,7 +49,9 @@ export class RegisterComponent implements OnInit {
         this.toast.setMessage('you successfully registered!', 'success');
         this.router.navigate(['/account/login']);
       },
-      error => this.toast.setMessage('email already exists', 'danger'),
+      error => {
+        this.toast.setMessage(ErrFmt(error, 'User already exists'), 'danger');
+      },
     );
   }
 }
