@@ -20,35 +20,35 @@ export class ContactService {
   }
 
   addContact(contact: Contact): Observable<Contact> {
-    contact.od = {
-      recordID: '6b2237ee0df85980',
-      company: '',
-      emailAddresses: [{
-        label: 'work',
-        email: 'carl-jung@example.com',
-      }],
-      familyName: 'Jung',
-      givenName: 'Carl',
-      jobTitle: '',
-      middleName: '',
-      phoneNumbers: [{
-        label: 'mobile',
-        number: '(555) 555-5555',
-      }],
-      hasThumbnail: true,
-      thumbnailPath: 'content://com.android.contacts/display_photo/3',
-      postalAddresses: [
-        {
-          street: '123 Fake Street',
-          city: 'Sample City',
-          state: 'CA',
-          region: 'CA',
-          postCode: '90210',
-          country: 'USA',
-          label: 'home',
-        },
-      ],
-    };
+    // contact.od = {
+    //   recordID: '6b2237ee0df85980',
+    //   company: '',
+    //   emailAddresses: [{
+    //     label: 'work',
+    //     email: 'carl-jung@example.com',
+    //   }],
+    //   familyName: 'Jung',
+    //   givenName: 'Carl',
+    //   jobTitle: '',
+    //   middleName: '',
+    //   phoneNumbers: [{
+    //     label: 'mobile',
+    //     number: '(555) 555-5555',
+    //   }],
+    //   hasThumbnail: true,
+    //   thumbnailPath: 'content://com.android.contacts/display_photo/3',
+    //   postalAddresses: [
+    //     {
+    //       street: '123 Fake Street',
+    //       city: 'Sample City',
+    //       state: 'CA',
+    //       region: 'CA',
+    //       postCode: '90210',
+    //       country: 'USA',
+    //       label: 'home',
+    //     },
+    //   ],
+    // };
 
     return this.http.post<Contact>('/api/contact', contact);
   }
@@ -58,35 +58,35 @@ export class ContactService {
   }
 
   editContact(contact: Contact): Observable<string> {
-    contact.od = {
-      recordID: '6b2237ee0df85980',
-      company: '',
-      emailAddresses: [{
-        label: 'work',
-        email: 'carl-jung@example.com',
-      }],
-      familyName: 'Jung',
-      givenName: 'Carl',
-      jobTitle: '',
-      middleName: '',
-      phoneNumbers: [{
-        label: 'mobile',
-        number: '(555) 555-5555',
-      }],
-      hasThumbnail: true,
-      thumbnailPath: 'content://com.android.contacts/display_photo/3',
-      postalAddresses: [
-        {
-          street: '123 Fake Street',
-          city: 'Sample City',
-          state: 'CA',
-          region: 'CA',
-          postCode: '90210',
-          country: 'USA',
-          label: 'home',
-        },
-      ],
-    };
+    // contact.od = {
+    //   recordID: '6b2237ee0df85980',
+    //   company: '',
+    //   emailAddresses: [{
+    //     label: 'work',
+    //     email: 'carl-jung@example.com',
+    //   }],
+    //   familyName: 'Jung',
+    //   givenName: 'Carl',
+    //   jobTitle: '',
+    //   middleName: '',
+    //   phoneNumbers: [{
+    //     label: 'mobile',
+    //     number: '(555) 555-5555',
+    //   }],
+    //   hasThumbnail: true,
+    //   thumbnailPath: 'content://com.android.contacts/display_photo/3',
+    //   postalAddresses: [
+    //     {
+    //       street: '123 Fake Street',
+    //       city: 'Sample City',
+    //       state: 'CA',
+    //       region: 'CA',
+    //       postCode: '90210',
+    //       country: 'USA',
+    //       label: 'home',
+    //     },
+    //   ],
+    // };
     return this.http.put(`/api/contact/${contact._id}`, contact, { responseType: 'text' });
   }
 
