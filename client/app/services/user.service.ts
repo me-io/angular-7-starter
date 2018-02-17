@@ -11,35 +11,35 @@ export class UserService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>('/api/user/register', user);
+    return this.http.post<User>('/api/account/user/register', user);
   }
 
   login(credentials): Observable<any> {
-    return this.http.post<any>('/api/user/login', credentials);
+    return this.http.post<any>('/api/account/user/login', credentials);
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('/api/users');
+    return this.http.get<User[]>('/api/account/users');
   }
 
   countUsers(): Observable<number> {
-    return this.http.get<number>('/api/users/count');
+    return this.http.get<number>('/api/account/users/count');
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>('/api/user', user);
+    return this.http.post<User>('/api/account/user', user);
   }
 
   getUser(user: User): Observable<User> {
-    return this.http.get<User>(`/api/user/${user._id}`);
+    return this.http.get<User>(`/api/account/user/${user._id}`);
   }
 
   editUser(user: User): Observable<string> {
-    return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
+    return this.http.put(`/api/account/user/${user._id}`, user, { responseType: 'text' });
   }
 
   deleteUser(user: User): Observable<string> {
-    return this.http.delete(`/api/user/${user._id}`, { responseType: 'text' });
+    return this.http.delete(`/api/account/user/${user._id}`, { responseType: 'text' });
   }
 
 }
