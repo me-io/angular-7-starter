@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
-import { ContactComponent } from './contact.component';
-import { ContactService } from './services/contact.service';
+import { PostService } from './services/post.service';
 import { SharedModule } from '../shared/shared.module';
-import { routing } from './contact.route';
+import { routing } from './post.route';
 import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PostListComponent } from './post.list.component';
+import { PostEditComponent } from './post.edit.component';
 
 @NgModule({
   declarations: [
-    ContactComponent,
+    PostListComponent,
+    PostEditComponent,
   ],
   imports: [
     routing,
     SharedModule,
   ],
   providers: [
-    ContactService,
+    PostService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
   ],
-  exports: [
-    ContactComponent,
-  ],
+  exports: [],
 })
 
-export class ContactModule {
+export class PostModule {
 }

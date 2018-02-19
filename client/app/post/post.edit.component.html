@@ -1,0 +1,62 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card">
+  <!-- Add Start -->
+  <h4 class="card-header" *ngIf="!isEditing">Add new post</h4>
+  <!-- Add End -->
+
+  <!-- Edit Start -->
+  <h4 class="card-header" *ngIf="isEditing">Edit post</h4>
+  <!-- Edit End -->
+
+  <div class="card-block">
+    <form class="form-inline" [formGroup]="editPostForm" (ngSubmit)="editPost()" style="text-align:center">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="number" name="age" formControlName="age" placeholder="Age" min="0">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any"
+               min="0">
+      </div>
+    </form>
+  </div>
+
+  <div class="card-footer">
+
+    <div class="pull-right" role="group" aria-label="Action">
+
+      <!-- Add Start -->
+      <button type="button" class="btn btn-sm btn-warning " *ngIf="!isEditing" (click)="cancelAdding()">
+        <i class="fa fa-times"></i> Cancel
+      </button>
+
+      <button type="button" class="btn btn-sm btn-success " *ngIf="!isEditing" (click)="addPost()"
+              [disabled]="!editPostForm.valid"><i class="fa fa-floppy-o"></i> Add
+      </button>
+
+      <!-- Add End -->
+
+
+      <!-- Edit Start -->
+      <button type="button" class="btn btn-sm btn-danger " *ngIf="isEditing" (click)="deletePost(post)">
+        <i class="fa fa-trash"></i> Delete
+      </button>
+
+      <button type="button" class="btn btn-sm btn-warning " *ngIf="isEditing" (click)="cancelEditing()">
+        <i class="fa fa-times"></i> Cancel
+      </button>
+
+      <button type="button" class="btn btn-sm btn-primary " *ngIf="isEditing" (click)="editPost()"
+              [disabled]="!editPostForm.valid"><i class="fa fa-floppy-o"></i> Save
+      </button>
+
+      <!-- Edit End -->
+    </div>
+
+  </div>
+</div>

@@ -1,37 +1,72 @@
-<div class="container-fluid">
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <i class="fa fa-home"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/tag" class="nav-link" routerLinkActive="active"
+             *ngIf="auth.loggedIn">
+            <i class="fa fa-list"></i> Tag
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/post" class="nav-link" routerLinkActive="active"
+             *ngIf="auth.loggedIn">
+            <i class="fa fa-list"></i> Post
+          </a>
+        </li>
+      </ul>
+      <div class="form-inline mt-2 mt-md-0">
 
-  <nav class="navbar navbar-dark bg-primary">
-    <div class="nav navbar-nav">
-      <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        <i class="fa fa-home"></i> Home
-      </a>
-      <a routerLink="/group" class="nav-item nav-link" routerLinkActive="active">
-        <i class="fa fa-list"></i> Groups
-      </a>
-      <a routerLink="/contact" class="nav-item nav-link" routerLinkActive="active">
-        <i class="fa fa-list"></i> Contacts
-      </a>
-      <a routerLink="/account/login" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-        <i class="fa fa-sign-in"></i> Login
-      </a>
-      <a routerLink="/account/register" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-        <i class="fa fa-user-plus"></i> Register
-      </a>
-      <a routerLink="/account/profile" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-user"></i> Account ({{auth.currentUser.initials}})
-      </a>
-      <a routerLink="/account/admin" class="nav-item nav-link lef" routerLinkActive="active"
-         *ngIf="auth.loggedIn && auth.isAdmin">
-        <i class="fa fa-lock"></i> Admin CP
-      </a>
-      <a routerLink="/account/admin" class="nav-item nav-link" routerLinkActive="active"
-         *ngIf="auth.loggedIn && auth.isMod">
-        <i class="fa fa-lock"></i> Mod CP
-      </a>
-      <a routerLink="/account/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-sign-out"></i> Logout
-      </a>
+        <!-- Account Start -->
+        <a routerLink="/account/profile" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="auth.loggedIn">
+          <i class="fa fa-user"></i> Account ({{auth.currentUser.initials}})
+        </a>
+        <a routerLink="/account/admin" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="auth.loggedIn && auth.isAdmin">
+          <i class="fa fa-lock"></i> Admin CP
+        </a>
+        <a routerLink="/account/admin" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="auth.loggedIn && auth.isMod">
+          <i class="fa fa-lock"></i> Mod CP
+        </a>
+        <!-- Account End -->
+
+        <a routerLink="/account/logout" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="auth.loggedIn">
+          <i class="fa fa-sign-out"></i> Logout
+        </a>
+        &nbsp;
+        <a routerLink="/account/register" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="!auth.loggedIn">
+          <i class="fa fa-user-plus"></i> Register
+        </a>
+        &nbsp;
+        <a routerLink="/account/login" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
+           *ngIf="!auth.loggedIn">
+          <i class="fa fa-sign-in"></i> Login
+        </a>
+
+      </div>
     </div>
   </nav>
+</header>
+
+<main role="main" class="main-container container-fluid">
+
   <router-outlet></router-outlet>
-</div>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">&copy; 2018</span>
+  </div>
+</footer>

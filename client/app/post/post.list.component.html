@@ -1,0 +1,41 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">Current posts ({{postArr.length}})
+    <span class="pull-right small"><button class="btn btn-sm btn-success" (click)="addPost()">
+      <i class="fa fa-plus-square"></i> New </button>
+    </span>
+  </h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Weight</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="postArr.length === 0">
+      <tr>
+        <td colspan="4">There are no posts in the DB. Add a new post below.</td>
+      </tr>
+      </tbody>
+      <tbody>
+      <tr *ngFor="let post of postArr">
+        <td>{{post.name}}</td>
+        <td>{{post.age}}</td>
+        <td>{{post.weight}}</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="editPost(post._id)"><i class="fa fa-pencil"></i> Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deletePost(post)"><i class="fa fa-trash"></i> Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

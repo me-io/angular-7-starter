@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
-import { GroupComponent } from './group.component';
-import { GroupService } from './services/group.service';
+import { TagService } from './services/tag.service';
 import { SharedModule } from '../shared/shared.module';
-import { routing } from './group.route';
+import { routing } from './tag.route';
 import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TagListComponent } from './tag.list.component';
+import { TagEditComponent } from './tag.edit.component';
 
 @NgModule({
   declarations: [
-    GroupComponent,
+    TagListComponent,
+    TagEditComponent,
   ],
   imports: [
     routing,
     SharedModule,
   ],
   providers: [
-    GroupService,
+    TagService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
   ],
-  exports: [
-    GroupComponent,
-  ],
+  exports: [],
 })
 
-export class GroupModule {
+export class TagModule {
 }

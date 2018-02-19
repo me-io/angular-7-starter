@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AuthInterceptor } from './util/interceptor/auth.interceptor';
 import { AuthGuardSuperAdmin } from './services/auth-guard-super-admin.service';
+import { ReactiveFormsModule } from '@angular/forms'; // <-- #1 import module
 
 @NgModule({
   declarations: [
@@ -30,20 +31,9 @@ import { AuthGuardSuperAdmin } from './services/auth-guard-super-admin.service';
     routing,
     SharedModule,
     DynamicModule,
+    ReactiveFormsModule,
   ],
   providers: [
-    // {
-    //   provide: Http,
-    //   useFactory: (backend: XHRBackend, options: RequestOptions) => {
-    //     return new HttpService(backend, options);
-    //   },
-    //   deps: [XHRBackend, RequestOptions],
-    // },
-    // { provide: DomSanitizer, useClass: DomSanitizerImpl },
-    // NO_SANITIZATION_PROVIDERS,
-    // { provide: DomSanitizer, useClass: DomSanitizerEx },
-    // { provide: DomSanitizer, useClass: NoSanitizationService },
-    // { provide: ElementSchemaRegistry, useClass: CustomDomElementSchemaRegistry },
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
@@ -55,7 +45,6 @@ import { AuthGuardSuperAdmin } from './services/auth-guard-super-admin.service';
       multi: true,
     },
   ],
-  // schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [
     AppComponent,
   ],

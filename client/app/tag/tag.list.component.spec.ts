@@ -1,6 +1,6 @@
-/*describe('Component: Contact', () => {
+/*describe('Component: TagList', () => {
   it('should create an instance', () => {
-    let component = new ContactComponent();
+    let component = new TagListComponent();
     expect(component).toBeTruthy();
   });
 });*/
