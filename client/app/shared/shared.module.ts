@@ -8,6 +8,9 @@ import { TestComponent } from './test/test.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
+import { HeaderComponent } from './page/header.component';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from './page/footer.component';
 
 @NgModule({
   imports: [
@@ -15,6 +18,7 @@ import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
   ],
   exports: [
     // Shared Modules
@@ -25,12 +29,16 @@ import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
     HttpClientModule,
     ToastComponent,
     LoadingComponent,
+    HeaderComponent,
+    FooterComponent,
     ProgressBarComponent,
     TestComponent,
   ],
   declarations: [
     ToastComponent,
     LoadingComponent,
+    HeaderComponent,
+    FooterComponent,
     ProgressBarComponent,
     TestComponent,
   ],
