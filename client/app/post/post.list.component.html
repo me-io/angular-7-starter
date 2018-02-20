@@ -1,39 +1,77 @@
-<app-loading [condition]="isLoading"></app-loading>
-
 <app-toast [message]="toast.message"></app-toast>
-
-<div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current posts ({{postArr.length}})
-    <span class="pull-right small"><button class="btn btn-sm btn-success" (click)="addPost()">
-      <i class="fa fa-plus-square"></i> New </button>
-    </span>
-  </h4>
-  <div class="card-block">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-default">
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody *ngIf="postArr.length === 0">
-      <tr>
-        <td colspan="4">There are no posts in the DB. Add a new post below.</td>
-      </tr>
-      </tbody>
-      <tbody>
-      <tr *ngFor="let post of postArr">
-        <td>{{post.title}}</td>
-        <td>{{post.content}}</td>
-        <td>
-          <button class="btn btn-sm btn-warning" (click)="editPost(post._id)"><i class="fa fa-pencil"></i> Edit
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="deletePost(post)"><i class="fa fa-trash"></i> Delete
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div class="text-center">
+    <app-loading [condition]="isLoading"></app-loading>
   </div>
+  <div class="card" *ngIf="!isLoading">
+    <div class="card-header d-flex justify-content-between">
+      <h6 class="mb-0">Posts <span class="badge badge-dark ml-1">{{ postArr.length }}</span></h6>
+      <button class="btn btn-primary btn-sm" (click)="addPost()"><i class="fa fa-plus fa-fw"></i> Create post</button>
+    </div>
+    <div class="card-body p-0">
+      <div *ngIf="postArr.length === 0">
+        <div class="p-4 text-center">
+          No posts found 😥
+        </div>
+      </div>
+      <table class="table mb-0" *ngIf="postArr.length > 0">
+        <thead class="thead-light">
+        <tr>
+          <th class="text-left" scope="col">Title</th>
+          <th class="text-left" scope="col">Content</th>
+          <th class="text-center" scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of postArr">
+          <td class="text-left">{{post.title}}</td>
+          <td class="text-left">{{post.content}}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning" (click)="editPost(post._id)">
+              <i class="fa fa-pencil fa-fw"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deletePost(post)">
+              <i class="fa fa-trash fa-fw"></i> Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--<div class="card" *ngIf="!isLoading">-->
+  <!--<h4 class="card-header">Current posts ({{postArr.length}})-->
+  <!--<span class="pull-right small"><button class="btn btn-sm btn-success" (click)="addPost()">-->
+  <!--<i class="fa fa-plus-square"></i> New </button>-->
+  <!--</span>-->
+  <!--</h4>-->
+  <!--<div class="card-block">-->
+  <!--<table class="table table-bordered table-striped">-->
+  <!--<thead class="thead-default">-->
+  <!--<tr>-->
+  <!--<th>Title</th>-->
+  <!--<th>Content</th>-->
+  <!--<th>Actions</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody *ngIf="postArr.length === 0">-->
+  <!--<tr>-->
+  <!--<td colspan="4">There are no posts in the DB. Add a new post below.</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--<tbody>-->
+  <!--<tr *ngFor="let post of postArr">-->
+  <!--<td>{{post.title}}</td>-->
+  <!--<td>{{post.content}}</td>-->
+  <!--<td>-->
+  <!--<button class="btn btn-sm btn-warning" (click)="editPost(post._id)"><i class="fa fa-pencil"></i> Edit-->
+  <!--</button>-->
+  <!--<button class="btn btn-sm btn-danger" (click)="deletePost(post)"><i class="fa fa-trash"></i> Delete-->
+  <!--</button>-->
+  <!--</td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+  <!--</table>-->
+  <!--</div>-->
+  <!--</div>-->
 </div>
