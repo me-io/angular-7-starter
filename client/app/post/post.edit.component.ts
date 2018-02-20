@@ -86,7 +86,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.postService.editPost(postData).subscribe(
       res => {
         this.post = postData;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Post successfully updated.', 'success');
         this.router.navigate(['/post']);
       },
       error => console.log(error),
@@ -97,7 +97,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.postService.addPost(this.editPostForm.value).subscribe(
       res => {
         const newPost = res;
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Post successfully created.', 'success');
         this.router.navigate(['/post']);
       },
       error => console.log(error),
@@ -105,10 +105,10 @@ export class PostEditComponent implements OnInit, OnDestroy {
   }
 
   deletePost(post) {
-    if (window.confirm('Are you sure you want to permanently delete this item?')) {
+    if (window.confirm('Are you sure you want to permanently delete this post?')) {
       this.postService.deletePost(post).subscribe(
         res => {
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Post successfully deleted.', 'success');
           this.router.navigate(['/post']);
         },
         error => console.log(error),

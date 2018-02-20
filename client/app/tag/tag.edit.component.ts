@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { TagService } from './services/tag.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { ErrFmt } from '../util/helpers/err.helper';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {TagService} from './services/tag.service';
+import {ToastComponent} from '../shared/toast/toast.component';
+import {ErrFmt} from '../util/helpers/err.helper';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-tag',
@@ -71,14 +71,15 @@ export class TagEditComponent implements OnInit, OnDestroy {
 
   cancelEditing() {
     this.tag = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Edit tag cancelled.', 'warning');
     // reload the tag to reset the editing
     this.getTagById();
+    this.router.navigate(['/tag']);
   }
 
   cancelAdding() {
     this.tag = {};
-    this.toast.setMessage('item adding cancelled.', 'warning');
+    this.toast.setMessage('Create tag cancelled.', 'warning');
     this.router.navigate(['/tag']);
   }
 
@@ -88,7 +89,7 @@ export class TagEditComponent implements OnInit, OnDestroy {
     this.tagService.editTag(tagData).subscribe(
       res => {
         this.tag = tagData;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Tag successfully updated.', 'success');
         this.router.navigate(['/tag']);
       },
       error => console.log(error),
@@ -99,7 +100,7 @@ export class TagEditComponent implements OnInit, OnDestroy {
     this.tagService.addTag(this.editTagForm.value).subscribe(
       res => {
         const newTag = res;
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Tag successfully created.', 'success');
         this.router.navigate(['/tag']);
       },
       error => console.log(error),
@@ -107,10 +108,10 @@ export class TagEditComponent implements OnInit, OnDestroy {
   }
 
   deleteTag(tag) {
-    if (window.confirm('Are you sure you want to permanently delete this item?')) {
+    if (window.confirm('Are you sure you want to permanently delete this tag?')) {
       this.tagService.deleteTag(tag).subscribe(
         res => {
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Tag successfully deleted.', 'success');
           this.router.navigate(['/tag']);
         },
         error => console.log(error),
