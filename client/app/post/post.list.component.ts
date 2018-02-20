@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { PostService } from './services/post.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { ErrFmt } from '../util/helpers/err.helper';
-import { Router } from '@angular/router';
+import {PostService} from './services/post.service';
+import {ToastComponent} from '../shared/toast/toast.component';
+import {ErrFmt} from '../util/helpers/err.helper';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',

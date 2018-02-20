@@ -1,59 +1,72 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <i class="fa fa-home"></i>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a routerLink="/tag" class="nav-link" routerLinkActive="active"
-             *ngIf="auth.loggedIn">
-            <i class="fa fa-list"></i> Tag
-          </a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/post" class="nav-link" routerLinkActive="active"
-             *ngIf="auth.loggedIn">
-            <i class="fa fa-list"></i> Post
-          </a>
-        </li>
-      </ul>
-      <div class="form-inline mt-2 mt-md-0">
-
-        <!-- Account Start -->
-        <a routerLink="/account/profile" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="auth.loggedIn">
-          <i class="fa fa-user"></i> Account ({{auth.currentUser.initials}})
-        </a>
-        <a routerLink="/account/admin" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="auth.loggedIn && auth.isAdmin">
-          <i class="fa fa-lock"></i> Admin CP
-        </a>
-        <a routerLink="/account/admin" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="auth.loggedIn && auth.isMod">
-          <i class="fa fa-lock"></i> Mod CP
-        </a>
-        <!-- Account End -->
-
-        <a routerLink="/account/logout" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="auth.loggedIn">
-          <i class="fa fa-sign-out"></i> Logout
-        </a>
-        &nbsp;
-        <a routerLink="/account/register" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="!auth.loggedIn">
-          <i class="fa fa-user-plus"></i> Register
-        </a>
-        &nbsp;
-        <a routerLink="/account/login" class="btn btn-outline-light my-2 my-sm-0" routerLinkActive="active"
-           *ngIf="!auth.loggedIn">
-          <i class="fa fa-sign-in"></i> Login
-        </a>
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="fa fa-home"></i> Angular 2 Starter
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/post" class="nav-link" routerLinkActive="active"
+               *ngIf="auth.loggedIn">
+              <i class="fa fa-file-text fa-fw"></i> Posts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/tag" class="nav-link" routerLinkActive="active"
+               *ngIf="auth.loggedIn">
+              <i class="fa fa-tags"></i> Tags
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a routerLink="/account/profile" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="auth.loggedIn">
+              <i class="fa fa-user fa-fw"></i> {{auth.currentUser.firstname}}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/account/admin" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="auth.loggedIn && auth.isAdmin">
+              <i class="fa fa-lock fa-fw"></i> Admin CP
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/account/admin" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="auth.loggedIn && auth.isMod">
+              <i class="fa fa-lock fa-fw"></i> Mod CP
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/account/logout" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="auth.loggedIn">
+              <i class="fa fa-sign-out fa-fw"></i> Logout
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/account/register" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="!auth.loggedIn">
+              <i class="fa fa-user-plus fa-fw"></i> Register
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/account/login" class="nav-link" routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               *ngIf="!auth.loggedIn">
+              <i class="fa fa-sign-in fa-fw"></i> Login
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

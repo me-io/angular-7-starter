@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { JwtHelper } from '../util/helpers/jwt.helper';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {JwtHelper} from '../util/helpers/jwt.helper';
 
-import { UserService } from './user.service';
-import { User } from '../shared/models/user.model';
+import {UserService} from './user.service';
+import {User} from '../shared/models/user.model';
 
 import 'rxjs/add/operator/map';
 
@@ -27,7 +27,6 @@ export class AuthService {
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
       this.setCurrentUser(decodedUser);
-
     }
   }
 
