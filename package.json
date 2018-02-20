@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "dev": "ng serve -pc proxy.conf.js",
+    "dev": "concurrently \"ng serve -pc proxy.conf.js\"",
     "prod": "ng build -aot -prod",
     "test": "ng test",
     "lint": "ng lint",
