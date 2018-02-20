@@ -14,8 +14,7 @@
         </div>
         <div class="form-group">
           <label for="content">Content</label>
-          <textarea type="text" name="content" formControlName="content" class="form-control" id="content"
-                    rows="16"></textarea>
+          <div [froalaEditor]="options" formControlName="content" name="content" id="content">Hello, Froala!</div>
         </div>
         <div *ngIf="!isEditing" class="text-right">
           <button type="button" class="btn btn-sm btn-link mr-2" *ngIf="!isEditing" (click)="cancelAdding()">

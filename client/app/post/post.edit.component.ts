@@ -13,7 +13,11 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 })
 export class PostEditComponent implements OnInit, OnDestroy {
 
-  //
+  private options: Object = {
+    heightMin: 400,
+    placeholderText: 'Edit Content Here'
+  };
+
   post = {};
   isEditing = true;
   isLoading = true;

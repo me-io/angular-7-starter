@@ -6,6 +6,7 @@ import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PostListComponent } from './post.list.component';
 import { PostEditComponent } from './post.edit.component';
+import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { PostEditComponent } from './post.edit.component';
   imports: [
     routing,
     SharedModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     PostService,

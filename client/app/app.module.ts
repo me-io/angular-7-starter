@@ -31,7 +31,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     routing,
     SharedModule,
     DynamicModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
