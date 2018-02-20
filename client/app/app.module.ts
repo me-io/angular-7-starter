@@ -17,12 +17,14 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {AuthInterceptor} from './util/interceptor/auth.interceptor';
 import {AuthGuardSuperAdmin} from './services/auth-guard-super-admin.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     NotFoundComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

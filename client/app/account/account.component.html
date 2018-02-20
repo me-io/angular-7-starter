@@ -10,9 +10,9 @@
       <app-toast [message]="toast.message"></app-toast>
       <div class="card" *ngIf="!isLoading">
         <div class="card">
-          <h6 class="card-header">
+          <h5 class="card-header">
             <i class="fa fa-gear fa-fw"></i> Public profile
-          </h6>
+          </h5>
           <div class="card-body">
             <form #accountForm="ngForm" (ngSubmit)="save(user)">
               <div class="form-group">
