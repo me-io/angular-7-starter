@@ -14,14 +14,11 @@
   <div class="card-block">
     <form class="form-inline" [formGroup]="editPostForm" (ngSubmit)="editPost()" style="text-align:center">
       <div class="form-group">
-        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+        <input class="form-control" type="text" name="name" formControlName="title" placeholder="Title">
       </div>
+
       <div class="form-group">
-        <input class="form-control" type="number" name="age" formControlName="age" placeholder="Age" min="0">
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any"
-               min="0">
+        <textarea class="form-control" type="text" name="content" formControlName="content"></textarea>
       </div>
     </form>
   </div>

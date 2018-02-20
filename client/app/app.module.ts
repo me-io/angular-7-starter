@@ -16,7 +16,7 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AuthInterceptor } from './util/interceptor/auth.interceptor';
 import { AuthGuardSuperAdmin } from './services/auth-guard-super-admin.service';
-import { ReactiveFormsModule } from '@angular/forms'; // <-- #1 import module
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

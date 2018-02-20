@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { PostService } from './services/post.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -17,26 +16,14 @@ export class PostListComponent implements OnInit {
   post = {};
   postArr = [];
   isLoading = true;
-  isEditing = false;
-
-  addPostForm: FormGroup;
-  name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
 
   constructor(private postService: PostService,
               private router: Router,
-              private formBuilder: FormBuilder,
               public toast: ToastComponent) {
   }
 
   ngOnInit() {
     this.getPosts();
-    this.addPostForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight,
-    });
   }
 
   getPosts() {

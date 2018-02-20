@@ -21,9 +21,6 @@ export class TagEditComponent implements OnInit, OnDestroy {
   sub: any;
 
   editTagForm: FormGroup;
-  name = ['', Validators.required];
-  age = ['', Validators.required];
-  weight = ['', Validators.required];
 
   constructor(private tagService: TagService,
               private route: ActivatedRoute,
@@ -47,10 +44,12 @@ export class TagEditComponent implements OnInit, OnDestroy {
   }
 
   private buildEditForm() {
+
+    // define the form
     this.editTagForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight,
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      color: ['', Validators.required],
     });
   }
 

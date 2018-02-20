@@ -12,9 +12,8 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
       <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Weight</th>
+        <th>Title</th>
+        <th>Content</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -25,9 +24,8 @@
       </tbody>
       <tbody>
       <tr *ngFor="let post of postArr">
-        <td>{{post.name}}</td>
-        <td>{{post.age}}</td>
-        <td>{{post.weight}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.content}}</td>
         <td>
           <button class="btn btn-sm btn-warning" (click)="editPost(post._id)"><i class="fa fa-pencil"></i> Edit
           </button>

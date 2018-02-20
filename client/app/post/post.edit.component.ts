@@ -21,9 +21,6 @@ export class PostEditComponent implements OnInit, OnDestroy {
   sub: any;
 
   editPostForm: FormGroup;
-  name = ['', Validators.required];
-  age = ['', Validators.required];
-  weight = ['', Validators.required];
 
   constructor(private postService: PostService,
               private route: ActivatedRoute,
@@ -48,9 +45,8 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   private buildEditForm() {
     this.editPostForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight,
+      title: ['', Validators.required],
+      content: ['', Validators.required],
     });
   }
 
