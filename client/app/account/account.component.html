@@ -1,28 +1,41 @@
-<app-loading [condition]="isLoading"></app-loading>
-
-<app-toast [message]="toast.message"></app-toast>
-
-<div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Account settings</h4>
-  <div class="card-block">
-    <form #accountForm="ngForm" (ngSubmit)="save(user)">
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input class="form-control" type="text" name="firstname" [(ngModel)]="user.firstname" placeholder="first name"
-               required>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab">
+        <a class="nav-link active" id="v-pills-home-tab" href="#v-pills-home">Profile</a>
+        <a class="nav-link" id="v-pills-profile-tab" href="#v-pills-profile">Account</a>
       </div>
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input class="form-control" type="text" name="lastname" [(ngModel)]="user.lastname" placeholder="last name"
-               required>
+    </div>
+    <div class="col-md-9">
+      <app-loading [condition]="isLoading"></app-loading>
+      <app-toast [message]="toast.message"></app-toast>
+      <div class="card" *ngIf="!isLoading">
+        <div class="card">
+          <h6 class="card-header">
+            Public profile
+          </h6>
+          <div class="card-body">
+            <form #accountForm="ngForm" (ngSubmit)="save(user)">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required/>
+                <small id="emailHelp" class="form-text text-muted">
+                  We'll never share your email with anyone else.
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="firstname">First name</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="user.firstname"/>
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="user.lastname"/>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!accountForm.form.valid">Update profile</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!accountForm.form.valid">
-        <i class="fa fa-save"></i> Save
-      </button>
-    </form>
+    </div>
   </div>
 </div>
