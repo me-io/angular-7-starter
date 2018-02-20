@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { PostService } from './services/post.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { ErrFmt } from '../util/helpers/err.helper';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {PostService} from './services/post.service';
+import {ToastComponent} from '../shared/toast/toast.component';
+import {ErrFmt} from '../util/helpers/err.helper';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -68,14 +68,15 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   cancelEditing() {
     this.post = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Edit post cancelled.', 'warning');
     // reload the post to reset the editing
     this.getPostById();
+    this.router.navigate(['/post']);
   }
 
   cancelAdding() {
     this.post = {};
-    this.toast.setMessage('item adding cancelled.', 'warning');
+    this.toast.setMessage('Create post cancelled.', 'warning');
     this.router.navigate(['/post']);
   }
 
