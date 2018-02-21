@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastComponent} from "../shared/toast/toast.component";
-import {Router} from "@angular/router";
 import {PostService} from "../post/services/post.service";
 import {ErrFmt} from "../util/helpers/err.helper";
 import {TagService} from "../tag/services/tag.service";
@@ -20,7 +19,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private postService: PostService,
               private tagService: TagService,
-              private router: Router,
               public toast: ToastComponent) {
   }
 

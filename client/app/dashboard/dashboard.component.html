@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="list-group list-group-flush" *ngIf="postArr.length > 0">
-            <a routerLink="/post/view/some_id"
+            <a routerLink="/post/view/{{post._id}}"
                class="list-group-item list-group-item-action flex-column align-items-start"
                *ngFor="let post of postArr">
               <div class="d-flex w-100 justify-content-between">
@@ -56,7 +56,7 @@
           </div>
           <ul class="list-unstyled mb-0 tags-list" *ngIf="tagArr.length > 0">
             <li *ngFor="let tag of tagArr">
-              <a href="#"><span class="tag-color" [ngStyle]="{'background-color': tag.color}"></span>{{ tag.name }}</a>
+              <a routerLink="/tag/{{tag._id}}/post"><span class="tag-color" [ngStyle]="{'background-color': tag.color}"></span>{{ tag.name }}</a>
             </li>
           </ul>
         </div>

@@ -4,31 +4,12 @@
       <div class="card">
         <div class="card-header d-flex">
           <div class="mr-auto">
-            <h5 class="mb-0">Travel Blog Post</h5>
+            <h5 class="mb-0">{{post.title}}</h5>
           </div>
-          <button class="btn btn-sm btn-warning mr-2"><i class="fa fa-pencil fa-fw"></i> Edit</button>
-          <button class="btn btn-sm btn-danger"><i class="fa fa-trash fa-fw"></i> Delete</button>
+          <button class="btn btn-sm btn-warning mr-2" routerLink="/post/edit/{{post._id}}"><i class="fa fa-pencil fa-fw"></i> Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deletePost(post)"><i class="fa fa-trash fa-fw"></i> Delete</button>
         </div>
-        <div class="card-body">
-          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum expedita, fugiat ipsam ipsum reprehenderit
-            unde! Alias, dolor dolorum ea, eius ex ipsum iure labore laboriosam maxime odit officia pariatur sequi.
-          </div>
-          <div>Architecto incidunt laudantium maxime sunt temporibus? Autem corporis id illum libero magni molestias
-            mollitia nesciunt obcaecati pariatur quae, quisquam quod, sit suscipit tempore vel. Atque distinctio esse
-            fugiat labore quae.
-          </div>
-          <div>Alias at autem, dignissimos distinctio earum enim id laboriosam minus odio quidem sit totam vero
-            voluptatum. Alias aliquam at culpa, cupiditate fugiat sint sunt temporibus? Culpa nesciunt nisi qui
-            voluptate!
-          </div>
-          <div>Beatae, consectetur, facilis. Aliquid assumenda commodi culpa dolore doloremque eius eligendi esse est
-            inventore laborum maiores, mollitia officiis omnis quaerat quam quasi quia repellat reprehenderit suscipit
-            ullam unde vel voluptatem!
-          </div>
-          <div>Ad alias, aperiam autem culpa debitis dolore eligendi, fugiat incidunt magnam minus nulla numquam
-            obcaecati odio possimus quisquam, quos veniam! A dicta doloribus impedit iure odio voluptas. Qui quos, sint?
-          </div>
-        </div>
+        <div class="card-body" [innerHtml]="post.content"></div>
       </div>
     </div>
   </div>
