@@ -16,3 +16,9 @@ span.tag-color {
   border-radius: 23px;
   margin-right: 7px;
 }
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1740px;
+  }
+}
