@@ -18,6 +18,8 @@ import {AuthInterceptor} from './util/interceptor/auth.interceptor';
 import {AuthGuardSuperAdmin} from './services/auth-guard-super-admin.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {PostService} from "./post/services/post.service";
+import {TagService} from "./tag/services/tag.service";
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
       useClass: AuthInterceptor,
       multi: true,
     },
+    PostService,
+    TagService
   ],
   bootstrap: [
     AppComponent,

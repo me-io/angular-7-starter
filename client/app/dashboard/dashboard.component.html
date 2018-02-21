@@ -1,14 +1,28 @@
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="container my-4">
+  <div class="text-center">
+    <app-loading [condition]="isLoading"></app-loading>
+  </div>
   <div class="row">
     <div class="col-md-9">
       <div class="card">
-        <h5 class="card-header">Posts</h5>
+        <div class="card-header d-flex justify-content-between">
+          <h5 class="mb-0">Posts</h5>
+          <button class="btn btn-primary btn-sm" routerLink="/post/new"><i class="fa fa-plus fa-fw"></i> Create post</button>
+        </div>
         <div class="card-body p-0">
-          <div class="list-group list-group-flush">
+          <div *ngIf="postArr.length === 0">
+            <div class="p-4 text-center">
+              No posts found 😥
+            </div>
+          </div>
+          <div class="list-group list-group-flush" *ngIf="postArr.length > 0">
             <a routerLink="/post/view/some_id"
-               class="list-group-item list-group-item-action flex-column align-items-start">
+               class="list-group-item list-group-item-action flex-column align-items-start"
+               *ngFor="let post of postArr">
               <div class="d-flex w-100 justify-content-between">
-                <div class="mb-1">My New Blog Post</div>
+                <div class="mb-1">{{ post.title }}</div>
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
                     <a href="#" class="text-muted">
@@ -21,49 +35,7 @@
                     </a>
                   </li>
                   <li class="list-inline-item text-muted">
-                    <small>7 minutes ago</small>
-                  </li>
-                </ul>
-              </div>
-            </a>
-            <a routerLink="/post/view/some_id"
-               class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <div>Another Blog Post</div>
-                <ul class="list-inline mb-0">
-                  <li class="list-inline-item">
-                    <a href="#" class="text-muted">
-                      <small><span class="tag-color" style="background-color: #0023ff;"></span>Web Design</small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#" class="text-muted">
-                      <small><i class="fa fa-user fa-fw"></i> John Doe</small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item text-muted">
-                    <small>29 minutes ago</small>
-                  </li>
-                </ul>
-              </div>
-            </a>
-            <a routerLink="/post/view/some_id"
-               class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <div class="mb-1">Travel Blog Post</div>
-                <ul class="list-inline mb-0">
-                  <li class="list-inline-item">
-                    <a href="#" class="text-muted">
-                      <small><span class="tag-color" style="background-color: #00c4ff;"></span>Freebies</small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#" class="text-muted">
-                      <small><i class="fa fa-user fa-fw"></i> John Doe</small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item text-muted">
-                    <small>an hour ago</small>
+                    <small>{{ post.created_at }}</small>
                   </li>
                 </ul>
               </div>
@@ -76,15 +48,14 @@
       <div class="card">
         <h5 class="card-header">Tags</h5>
         <div class="card-body pt-3 pb-3">
-          <ul class="list-unstyled mb-0 tags-list">
-            <li>
-              <a href="#"><span class="tag-color" style="background-color: #0023ff;"></span>Web Design</a>
-            </li>
-            <li>
-              <a href="#"><span class="tag-color" style="background-color: #FF4BD8;"></span>HTML</a>
-            </li>
-            <li>
-              <a href="#"><span class="tag-color" style="background-color: #00c4ff;"></span>Freebies</a>
+          <div *ngIf="tagArr.length === 0">
+            <div class="p-2 text-center">
+              No tags found 😥
+            </div>
+          </div>
+          <ul class="list-unstyled mb-0 tags-list" *ngIf="tagArr.length > 0">
+            <li *ngFor="let tag of tagArr">
+              <a href="#"><span class="tag-color" [ngStyle]="{'background-color': tag.color}"></span>{{ tag.name }}</a>
             </li>
           </ul>
         </div>
