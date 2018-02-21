@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
 })
 export class PostListComponent implements OnInit {
 
-  //
   post = {};
   postArr = [];
   isLoading = true;
