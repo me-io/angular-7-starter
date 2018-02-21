@@ -5,6 +5,8 @@ import {PostService} from "../post/services/post.service";
 import {ErrFmt} from "../util/helpers/err.helper";
 import {TagService} from "../tag/services/tag.service";
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -43,4 +45,7 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  timeAgo(created_at: string) {
+    return moment(parseInt(created_at, 10)).fromNow();
+  }
 }

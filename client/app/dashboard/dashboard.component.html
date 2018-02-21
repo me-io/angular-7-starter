@@ -9,7 +9,8 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <h5 class="mb-0">Posts</h5>
-          <button class="btn btn-primary btn-sm" routerLink="/post/new"><i class="fa fa-plus fa-fw"></i> Create post</button>
+          <button class="btn btn-primary btn-sm" routerLink="/post/new"><i class="fa fa-plus fa-fw"></i> Create post
+          </button>
         </div>
         <div class="card-body p-0">
           <div *ngIf="postArr.length === 0">
@@ -35,7 +36,7 @@
                     </a>
                   </li>
                   <li class="list-inline-item text-muted">
-                    <small>{{ post.created_at }}</small>
+                    <small>{{ timeAgo(post.created_at) }}</small>
                   </li>
                 </ul>
               </div>
