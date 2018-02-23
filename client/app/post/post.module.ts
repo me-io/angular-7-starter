@@ -7,7 +7,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {PostListComponent} from './post.list.component';
 import {PostEditComponent} from './post.edit.component';
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
-import { PostViewComponent } from './post.view.component';
+import {PostViewComponent} from './post.view.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostViewComponent } from './post.view.component';
     routing,
     SharedModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    NgSelectModule
   ],
   providers: [
     PostService,

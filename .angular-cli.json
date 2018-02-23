@@ -24,6 +24,7 @@
         "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
         "../node_modules/froala-editor/css/froala_style.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/@ng-select/ng-select/themes/default.theme.css",
         "styles.scss"
       ],
       "scripts": [

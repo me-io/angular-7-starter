@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class PostListComponent implements OnInit {
 
   post = {};
-  postArr = [];
+  posts = [];
   isLoading = true;
 
   constructor(private postService: PostService,
@@ -27,7 +27,7 @@ export class PostListComponent implements OnInit {
 
   getPosts() {
     this.postService.getPosts().subscribe(
-      data => this.postArr = data,
+      data => this.posts = data,
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
     );
@@ -45,8 +45,8 @@ export class PostListComponent implements OnInit {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.postService.deletePost(post).subscribe(
         res => {
-          const pos = this.postArr.map(elem => elem._id).indexOf(post._id);
-          this.postArr.splice(pos, 1);
+          const pos = this.posts.map(elem => elem._id).indexOf(post._id);
+          this.posts.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error),

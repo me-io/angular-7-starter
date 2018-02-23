@@ -13,8 +13,8 @@ import * as moment from 'moment';
 })
 export class DashboardComponent implements OnInit {
 
-  tagArr = [];
-  postArr = [];
+  tags = [];
+  posts = [];
   isLoading = true;
 
   constructor(private postService: PostService,
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
   getPosts() {
     this.postService.getPosts().subscribe(
-      data => this.postArr = data,
+      data => this.posts = data,
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
     );
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   getTags() {
     this.tagService.getTags().subscribe(
-      data => this.tagArr = data,
+      data => this.tags = data,
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
     );

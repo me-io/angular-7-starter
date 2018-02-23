@@ -1,10 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {PostService} from './services/post.service';
 import {ToastComponent} from '../shared/toast/toast.component';
 import {ErrFmt} from '../util/helpers/err.helper';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
+import {TagService} from "../tag/services/tag.service";
 
 @Component({
   selector: 'app-post',
@@ -13,12 +15,11 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 })
 export class PostEditComponent implements OnInit, OnDestroy {
 
-  private options: Object = {
-    heightMin: 400,
-    placeholderText: 'Edit Content Here'
-  };
+  typeahead = new EventEmitter<string>();
 
   post = {};
+  tags = [];
+
   isEditing = true;
   isLoading = true;
   _id: string;
@@ -26,11 +27,27 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   editPostForm: FormGroup;
 
+  private options: Object = {
+    heightMin: 400,
+    placeholderText: 'Edit Content Here'
+  };
+
   constructor(private postService: PostService,
+              private tagService: TagService,
               private route: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
               public toast: ToastComponent) {
+    this.typeahead
+      .distinctUntilChanged()
+      .debounceTime(200)
+      .switchMap(term => this.loadTags(term))
+      .subscribe(items => {
+        this.tags = items;
+      }, (err) => {
+        console.log(err);
+        this.tags = [];
+      });
   }
 
   ngOnInit() {
@@ -51,6 +68,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.editPostForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
+      tags: [[]],
     });
   }
 
@@ -118,6 +136,10 @@ export class PostEditComponent implements OnInit, OnDestroy {
         error => console.log(error),
       );
     }
+  }
+
+  loadTags(term: string): Observable<any[]> {
+    return this.tagService.getTags(term);
   }
 
 }

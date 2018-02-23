@@ -13,6 +13,18 @@
           <input type="text" class="form-control" name="title" formControlName="title" id="title">
         </div>
         <div class="form-group">
+          <label>Tags</label>
+          <ng-select [items]="tags"
+                     bindLabel="name"
+                     bindValue="_id"
+                     placeholder="Select tags"
+                     [typeahead]="typeahead"
+                     [multiple]="true"
+                     clearAllText="Clear"
+                     formControlName="tags">
+          </ng-select>
+        </div>
+        <div class="form-group">
           <label for="content">Content</label>
           <div [froalaEditor]="options" formControlName="content" name="content" id="content">Hello, Froala!</div>
         </div>
