@@ -41,7 +41,7 @@ export class PostViewComponent implements OnInit, OnDestroy {
     }
     this.postService.getPostById(this._id).subscribe(
       data => {
-        this.post = data;
+        this.post = data[0];
       },
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,

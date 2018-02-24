@@ -7,6 +7,7 @@ import {ErrFmt} from '../util/helpers/err.helper';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import {TagService} from "../tag/services/tag.service";
+import {Post} from "../shared/models/post.model";
 
 @Component({
   selector: 'app-post',
@@ -17,7 +18,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   typeahead = new EventEmitter<string>();
 
-  post = {};
+  post: Post = {};
   tags = [];
 
   isEditing = true;
@@ -80,8 +81,18 @@ export class PostEditComponent implements OnInit, OnDestroy {
     }
     this.postService.getPostById(this._id).subscribe(
       data => {
-        this.post = data;
-        this.editPostForm.patchValue(data);
+        this.post = data[0];
+        // this.editPostForm.setValue()patchValue(data[0]);
+        this.editPostForm.setValue({
+          'title': this.post.title,
+          'content': this.post.content,
+          'tags': data[0].tags.map(tag => {
+            return {
+              '_id': tag._id,
+              'name': tag.name
+            };
+          })
+        });
       },
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,

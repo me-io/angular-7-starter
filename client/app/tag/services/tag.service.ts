@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 import {Tag} from '../../shared/models/tag.model';
+import {isUndefined} from "util";
 
 @Injectable()
 export class TagService {
@@ -12,6 +13,9 @@ export class TagService {
   }
 
   getTags(term: string): Observable<Tag[]> {
+    if (isUndefined(term)) {
+      return this.http.get<Tag[]>(`/api/tags`);
+    }
     return this.http.get<Tag[]>(`/api/tags?q=${term}`);
   }
 

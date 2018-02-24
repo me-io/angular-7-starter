@@ -15,29 +15,28 @@
         </div>
       </div>
       <table class="table mb-0" *ngIf="posts.total > 0">
-        <p>Show posts @todo</p>
-        <!--<thead class="thead-light">-->
-        <!--<tr>-->
-          <!--<th class="text-left" scope="col">Title</th>-->
-          <!--<th class="text-center" scope="col">Actions</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr *ngFor="let post of posts">-->
-          <!--<td class="text-left">{{post.title}}</td>-->
-          <!--<td class="text-center">-->
-            <!--<a class="btn btn-sm btn-primary" routerLink="/post/view/{{post._id}}">-->
-              <!--<i class="fa fa-eye fa-fw"></i> View-->
-            <!--</a>-->
-            <!--<button class="btn btn-sm btn-warning" (click)="editPost(post._id)">-->
-              <!--<i class="fa fa-pencil fa-fw"></i> Edit-->
-            <!--</button>-->
-            <!--<button class="btn btn-sm btn-danger" (click)="deletePost(post)">-->
-              <!--<i class="fa fa-trash fa-fw"></i> Delete-->
-            <!--</button>-->
-          <!--</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
+        <thead class="thead-light">
+        <tr>
+          <th class="text-left" scope="col">Title</th>
+          <th class="text-center" scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let post of posts.data">
+          <td class="text-left">{{post.title}}</td>
+          <td class="text-center">
+            <a class="btn btn-sm btn-primary" routerLink="/post/view/{{post._id}}">
+              <i class="fa fa-eye fa-fw"></i> View
+            </a>
+            <button class="btn btn-sm btn-warning" (click)="editPost(post._id)">
+              <i class="fa fa-pencil fa-fw"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deletePost(post)">
+              <i class="fa fa-trash fa-fw"></i> Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
       </table>
     </div>
   </div>

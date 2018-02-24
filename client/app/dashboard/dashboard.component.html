@@ -19,29 +19,21 @@
             </div>
           </div>
           <div class="list-group list-group-flush" *ngIf="posts.total > 0">
-            <p>Show posts @todo</p>
-            <!--<a routerLink="/post/view/{{post._id}}"-->
-               <!--class="list-group-item list-group-item-action flex-column align-items-start"-->
-               <!--*ngFor="let post of posts">-->
-              <!--<div class="d-flex w-100 justify-content-between">-->
-                <!--<div class="mb-1">{{ post.title }}</div>-->
-                <!--<ul class="list-inline mb-0">-->
-                  <!--<li class="list-inline-item">-->
-                    <!--<a href="#" class="text-muted">-->
-                      <!--<small><span class="tag-color" style="background-color: #00c4ff;"></span>Freebies</small>-->
-                    <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="list-inline-item">-->
-                    <!--<a href="#" class="text-muted">-->
-                      <!--<small><i class="fa fa-user fa-fw"></i> John Doe</small>-->
-                    <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="list-inline-item text-muted">-->
-                    <!--<small>{{ timeAgo(post.created_at) }}</small>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</div>-->
-            <!--</a>-->
+            <a routerLink="/post/view/{{post._id}}"
+               class="list-group-item list-group-item-action flex-column align-items-start"
+               *ngFor="let post of posts.data">
+              <div class="d-flex w-100 justify-content-between">
+                <div class="mb-1">{{ post.title }}</div>
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item text-muted">
+                    <small><i class="fa fa-user fa-fw"></i> {{ post.user_detail.firstname }} {{ post.user_detail.lastname }}</small>
+                  </li>
+                  <li class="list-inline-item text-muted">
+                    <small>{{ timeAgo(post.created_at) }}</small>
+                  </li>
+                </ul>
+              </div>
+            </a>
           </div>
         </div>
       </div>
