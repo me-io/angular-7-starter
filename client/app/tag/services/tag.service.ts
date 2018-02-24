@@ -12,11 +12,8 @@ export class TagService {
   constructor(private http: HttpClient) {
   }
 
-  getTags(term: string): Observable<Tag[]> {
-    if (isUndefined(term)) {
-      return this.http.get<Tag[]>(`/api/tags`);
-    }
-    return this.http.get<Tag[]>(`/api/tags?q=${term}`);
+  getTags(term: string = null): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`/api/tags?q=${term == null ? '' : term}`);
   }
 
   getTagById(_id: String): Observable<Tag> {
