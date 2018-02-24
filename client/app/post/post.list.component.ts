@@ -25,8 +25,8 @@ export class PostListComponent implements OnInit {
     this.getPosts();
   }
 
-  getPosts() {
-    this.postService.getPosts().subscribe(
+  getPosts(page: number = null) {
+    this.postService.getPosts(page).subscribe(
       data => this.posts = data,
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
@@ -54,4 +54,12 @@ export class PostListComponent implements OnInit {
     }
   }
 
+  setPage(page: number) {
+    // get pager object from service
+    this.getPosts(page);
+  }
+
+  getRange(lastPage: number) {
+    return _.range(1, lastPage + 1);
+  }
 }
