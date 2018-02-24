@@ -1,82 +1,126 @@
-# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
+<p align="center">
+  <h2 align="center">Angular Full Stack</h2>
+  <p align="center">The frontend is generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a>. The backend is made from scratch. Whole stack in <a href="https://www.typescriptlang.org">TypeScript</a>.</p>
+  <p align="center">
+    <a href="LICENSE.md">
+      <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
+    </a>
+    <a href="https://david-dm.org/DavideViolante/Angular2-Full-Stack">
+      <img src="https://david-dm.org/DavideViolante/Angular-Full-Stack.svg?style=flat-square" alt="Dependencies">
+    </a> 
+    <a href="https://www.paypal.me/meabed">
+      <img src="https://img.shields.io/badge/paypal-donate-179BD7.svg?style=flat-squares" alt="Donate">
+    </a>
+  </p>
+</p>
 
 
-The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). The backend is made from scratch. Whole stack in [TypeScript](https://www.typescriptlang.org).
+## Prerequisite
 
-This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
-* [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](https://www.mongodb.com)): database
-* [**E**xpress.js](http://expressjs.com): backend framework
-* [**A**ngular 2+](https://angular.io): frontend framework
-* [**N**ode.js](https://nodejs.org): runtime environment
-
-Other tools and technologies used:
+* [PHP >= 7](https://nodejs.org): runtime environment
+* [MongoDB](https://www.mongodb.com): database
+* [Slim API](https://github.com/me-io/slim-api): backend framework
 * [Angular CLI](https://cli.angular.io): frontend scaffolding
+
+## Uses
+
+* [Angular 2+](https://angular.io): frontend framework
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
-* [JSON Web Token](https://jwt.io): user authentication
-* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular
-* [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
+
 1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)
-2. Install Angular CLI: `npm i -g @angular/cli`
-3. From project root folder install all the dependencies: `npm i`
+2. Install Angular CLI by running the following command:
+  ```bash
+  npm i -g @angular/cli
+  ```
+3. From project root folder install all the dependencies by running the following command inside your terminal:
+  ```
+  npm install
+  ```
 
-## Run
+## Run the app
+
 ### Development mode
-`npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server.
 
-A window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
+By running the following command a window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
+
+```
+npm run dev
+```
 
 ### Production mode
-`npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) 
 
-## Deploy (Heroku)
+To run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) run the following command:
+
+```bash
+npm run prod
+```
+
+## Deploy to Heroku
+
 1. Go to Heroku and create a new app
 2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-3. `heroku login`
-4. `cd my-project/`
-5. `git init`
-6. `heroku git:remote -a your-app-name`
+3. Run the following command to login to heroku:
+  ```bash
+  heroku login
+  ```
+4. Open the root directory of the project inside your terminal by running:
+  ```bash
+  cd my-project/
+  ```
+5. Inside of the project running the following command will creates a new Git repository
+  ```bash
+  git init
+  ```
+6. Update your heroku app name by running the following command: 
+  ```bash
+  heroku git:remote -a your-app-name
+  ```
 7. Download this repo and copy all files into `my-project` folder
-8. Edit `.gitignore` and remove line with `/dist`
+8. Now Edit `.gitignore` and remove line with `/dist` text.
 9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
-10. `npm i`
-11. `ng build -prod` or `ng build -aot -prod`
-12. `tsc -p server`
-13. `git add .`
-14. `git commit -m "Going to Heroku"`
-15. `git push heroku master`
-16. `heroku open`
-17. A window will open with your app online
+10. Install the dependencies by running the following command:
+  ```
+  npm install
+  ```
+11. Now build your app by running one of the following command:
+  ```bash
+  ng build -prod 
+  >> or 
+  ng build -aot -prod
+  ```
+12. Run the following command
+  ```bash
+  tsc -p server
+  ```
+13. Make a new commit and push the changes to heroku by running the following commands:
+  ```bash
+  git add . 
+  git commit -m "Going to Heroku"
+  git push heroku master
+  ```
+14. Now following command will open with your app inside your browser:
+  ```bash
+  heroku open
+  ```
 
-## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
+## Demo
 
-## Please open an issue if
-* you have any suggestion to improve this project
-* you noticed any problem or error
-
-## To do
-* More tests
-
-## Running unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `npm start`.
-
-## Running TSLint
-Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
-
-## Further help
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-To get more help about this project, [visit the wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
-
-### Author
-* [Davide Violante](https://github.com/DavideViolante)
+![In Action](https://d2ffutrenqvap3.cloudfront.net/items/1A422k2U0O2R0T2M2j3k/Screen%20Recording%202018-02-25%20at%2012.44%20AM.gif)
 
 
-npm rebuild node-sass
+## Contributors
+
+A huge thanks to all of our contributors:
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars0.githubusercontent.com/u/45731?v=3" width="100px;"/><br /><sub><b>Mohamed Meabed</b></sub>](https://github.com/Meabed)<br />[💻](https://github.com//angular-2-starter/commits?author=Meabed "Code") [📢](#talk-Meabed "Talks") | [<img src="https://avatars2.githubusercontent.com/u/16267321?v=3" width="100px;"/><br /><sub><b>Zeeshan Ahmad</b></sub>](https://github.com/zeeshanu)<br />[💻](https://github.com//angular-2-starter/commits?author=zeeshanu "Code") [🐛](https://github.com//angular-2-starter/issues?q=author%3Azeeshanu "Bug reports") [⚠️](https://github.com//angular-2-starter/commits?author=zeeshanu "Tests") [📖](https://github.com//angular-2-starter/commits?author=zeeshanu "Documentation") |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## License
+
+The code is available under the [MIT license](LICENSE.md).
