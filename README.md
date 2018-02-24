@@ -106,6 +106,11 @@ npm run prod
   heroku open
   ```
 
+## Demo
+
+![In Action](https://d2ffutrenqvap3.cloudfront.net/items/1A422k2U0O2R0T2M2j3k/Screen%20Recording%202018-02-25%20at%2012.44%20AM.gif)
+
+
 ## Contributors
 
 A huge thanks to all of our contributors:
