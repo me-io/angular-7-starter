@@ -5,6 +5,8 @@ import {ToastComponent} from '../shared/toast/toast.component';
 import {ErrFmt} from '../util/helpers/err.helper';
 import {Router} from '@angular/router';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.list.component.html',

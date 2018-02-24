@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ToastComponent} from "../shared/toast/toast.component";
 import {PostService} from "./services/post.service";
 import {ErrFmt} from "../util/helpers/err.helper";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-post-view',
@@ -19,7 +20,8 @@ export class PostViewComponent implements OnInit, OnDestroy {
   constructor(private postService: PostService,
               private route: ActivatedRoute,
               private router: Router,
-              public toast: ToastComponent) {
+              public toast: ToastComponent,
+              public auth: AuthService) {
   }
 
   ngOnInit() {

@@ -6,6 +6,8 @@ import {TagService} from "../tag/services/tag.service";
 
 import * as moment from 'moment';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
