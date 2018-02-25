@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {Tag} from '../../shared/models/tag.model';
 import {isUndefined} from "util";
+import {Post} from "../../shared/models/post.model";
 
 @Injectable()
 export class TagService {
@@ -40,8 +41,8 @@ export class TagService {
     return this.http.delete(`/api/tag/${tag._id}`, {responseType: 'text'});
   }
 
-  getTagPosts(_id: String, page): Observable<Tag> {
-    return this.http.get<Tag>(`/api/tag/${_id}/posts?page=${page == null ? 1 : page}`);
+  getTagPosts(_id: String, page): Observable<Post> {
+    return this.http.get<Post>(`/api/tag/${_id}/posts?page=${page == null ? 1 : page}`);
   }
 
 }

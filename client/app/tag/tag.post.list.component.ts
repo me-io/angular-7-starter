@@ -14,7 +14,7 @@ import * as _ from "lodash";
 export class TagPostListComponent implements OnInit, OnDestroy {
 
   sub: any;
-  posts = [];
+  posts: any = [];
   _id: string;
   isLoading = true;
 
