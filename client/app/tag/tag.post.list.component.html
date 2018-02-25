@@ -1,34 +1,58 @@
-<div class="container">
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="container my-4">
+  <div class="text-center">
+    <app-loading [condition]="isLoading"></app-loading>
+  </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <h5 class="card-header">Posts in Tet</h5>
-        <div class="card-body p-0">
-          <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
-              <div class="d-flex w-100 justify-content-between">
-                <div class="mb-1">Test post using forala</div>
-                <ul class="list-inline mb-0">
-                  <li class="list-inline-item">
-                    <a class="text-muted" href="#">
-                      <small>
-                        <span class="tag-color" style="background-color: #00c4ff;"></span>Freebies
-                      </small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="text-muted" href="#">
-                      <small><i class="fa fa-user fa-fw"></i> John Doe</small>
-                    </a>
-                  </li>
-                  <li class="list-inline-item text-muted">
-                    <small>4 minutes ago</small>
-                  </li>
-                </ul>
+      <div *ngIf="!isLoading">
+        <div class="card mb-5">
+          <div class="card-header d-flex justify-content-between">
+            <h5 class="mb-0">Posts</h5>
+            <button class="btn btn-primary btn-sm" routerLink="/post/new"><i class="fa fa-plus fa-fw"></i> Create post
+            </button>
+          </div>
+          <div class="card-body p-0">
+            <div *ngIf="posts.total === 0">
+              <div class="p-4 text-center">
+                No posts found 😥
               </div>
-            </a>
+            </div>
+            <div class="list-group list-group-flush" *ngIf="posts.total > 0">
+              <a routerLink="/post/view/{{post._id}}"
+                 class="list-group-item list-group-item-action flex-column align-items-start"
+                 *ngFor="let post of posts.data">
+                <div class="d-flex w-100 justify-content-between">
+                  <div class="mb-1">{{ post.title }}</div>
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item text-muted">
+                      <small><i class="fa fa-user fa-fw"></i> {{ post.user_detail.firstname }} {{
+                        post.user_detail.lastname }}
+                      </small>
+                    </li>
+                    <li class="list-inline-item text-muted">
+                      <small>{{ timeAgo(post.created_at) }}</small>
+                    </li>
+                  </ul>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
+        <nav *ngIf="posts.total > 0">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [ngClass]="{disabled:posts.current_page === 1}">
+              <a class="page-link" (click)="setPage(posts.current_page - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of getRange(posts.last_page)" class="page-item" [ngClass]="{active:posts.current_page === page}">
+              <a class="page-link" (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:posts.current_page === posts.last_page}">
+              <a class="page-link" (click)="setPage(posts.current_page + 1)">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

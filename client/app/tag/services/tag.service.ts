@@ -40,4 +40,8 @@ export class TagService {
     return this.http.delete(`/api/tag/${tag._id}`, {responseType: 'text'});
   }
 
+  getTagPosts(_id: String, page): Observable<Tag> {
+    return this.http.get<Tag>(`/api/tag/${_id}/posts?page=${page == null ? 1 : page}`);
+  }
+
 }
