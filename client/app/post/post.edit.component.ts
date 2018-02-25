@@ -1,10 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { PostService } from './services/post.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { ErrFmt } from '../util/helpers/err.helper';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {PostService} from './services/post.service';
+import {ToastComponent} from '../shared/toast/toast.component';
+import {ErrFmt} from '../util/helpers/err.helper';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
+import {TagService} from "../tag/services/tag.service";
+import {Post} from "../shared/models/post.model";
 
 @Component({
   selector: 'app-post',
@@ -13,8 +16,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class PostEditComponent implements OnInit, OnDestroy {
 
-  //
-  post = {};
+  typeahead = new EventEmitter<string>();
+
+  post: Post = {};
+  tags = [];
+
   isEditing = true;
   isLoading = true;
   _id: string;
@@ -22,11 +28,27 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   editPostForm: FormGroup;
 
+  private options: Object = {
+    heightMin: 400,
+    placeholderText: 'Edit Content Here'
+  };
+
   constructor(private postService: PostService,
+              private tagService: TagService,
               private route: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
               public toast: ToastComponent) {
+    this.typeahead
+      .distinctUntilChanged()
+      .debounceTime(200)
+      .switchMap(term => this.loadTags(term))
+      .subscribe(items => {
+        this.tags = items;
+      }, (err) => {
+        console.log(err);
+        this.tags = [];
+      });
   }
 
   ngOnInit() {
@@ -47,6 +69,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.editPostForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
+      tags: [[]],
     });
   }
 
@@ -58,8 +81,18 @@ export class PostEditComponent implements OnInit, OnDestroy {
     }
     this.postService.getPostById(this._id).subscribe(
       data => {
-        this.post = data;
-        this.editPostForm.patchValue(data);
+        this.post = data[0];
+        // this.editPostForm.setValue()patchValue(data[0]);
+        this.editPostForm.setValue({
+          'title': this.post.title,
+          'content': this.post.content,
+          'tags': data[0].tags.map(tag => {
+            return {
+              '_id': tag._id,
+              'name': tag.name
+            };
+          })
+        });
       },
       error => this.toast.setMessage(ErrFmt(error), 'danger'),
       () => this.isLoading = false,
@@ -68,14 +101,15 @@ export class PostEditComponent implements OnInit, OnDestroy {
 
   cancelEditing() {
     this.post = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Edit post cancelled.', 'warning');
     // reload the post to reset the editing
     this.getPostById();
+    this.router.navigate(['/post']);
   }
 
   cancelAdding() {
     this.post = {};
-    this.toast.setMessage('item adding cancelled.', 'warning');
+    this.toast.setMessage('Create post cancelled.', 'warning');
     this.router.navigate(['/post']);
   }
 
@@ -85,7 +119,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.postService.editPost(postData).subscribe(
       res => {
         this.post = postData;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Post successfully updated.', 'success');
         this.router.navigate(['/post']);
       },
       error => console.log(error),
@@ -96,7 +130,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
     this.postService.addPost(this.editPostForm.value).subscribe(
       res => {
         const newPost = res;
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Post successfully created.', 'success');
         this.router.navigate(['/post']);
       },
       error => console.log(error),
@@ -104,15 +138,19 @@ export class PostEditComponent implements OnInit, OnDestroy {
   }
 
   deletePost(post) {
-    if (window.confirm('Are you sure you want to permanently delete this item?')) {
+    if (window.confirm('Are you sure you want to permanently delete this post?')) {
       this.postService.deletePost(post).subscribe(
         res => {
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Post successfully deleted.', 'success');
           this.router.navigate(['/post']);
         },
         error => console.log(error),
       );
     }
+  }
+
+  loadTags(term: string): Observable<any[]> {
+    return this.tagService.getTags(term);
   }
 
 }

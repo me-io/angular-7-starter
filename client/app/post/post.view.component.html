@@ -1,0 +1,20 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex">
+          <div class="mr-auto">
+            <h5 class="mb-0">{{post.title}}</h5>
+          </div>
+          <button class="btn btn-sm btn-warning mr-2" routerLink="/post/edit/{{post._id}}" *ngIf="auth.loggedIn"><i
+            class="fa fa-pencil fa-fw"></i> Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deletePost(post)" *ngIf="auth.loggedIn"><i
+            class="fa fa-trash fa-fw"></i> Delete
+          </button>
+        </div>
+        <div class="card-body" [innerHtml]="post.content"></div>
+      </div>
+    </div>
+  </div>
+</div>

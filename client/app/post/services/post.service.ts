@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
-import { Post } from '../../shared/models/post.model';
+import {Post} from '../../shared/models/post.model';
 
 @Injectable()
 export class PostService {
@@ -11,8 +11,8 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('/api/posts');
+  getPosts(page: number = null): Observable<Post[]> {
+    return this.http.get<Post[]>(`/api/posts?page=${page == null ? 1 : page}`);
   }
 
   getPostById(_id: String): Observable<Post> {
@@ -32,11 +32,11 @@ export class PostService {
   }
 
   editPost(post: Post): Observable<string> {
-    return this.http.put(`/api/post/${post._id}`, post, { responseType: 'text' });
+    return this.http.put(`/api/post/${post._id}`, post, {responseType: 'text'});
   }
 
   deletePost(post: Post): Observable<string> {
-    return this.http.delete(`/api/post/${post._id}`, { responseType: 'text' });
+    return this.http.delete(`/api/post/${post._id}`, {responseType: 'text'});
   }
 
 }

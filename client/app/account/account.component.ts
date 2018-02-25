@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ToastComponent} from '../shared/toast/toast.component';
+import {AuthService} from '../services/auth.service';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +9,6 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-
   user = {};
   isLoading = true;
 
@@ -36,5 +35,4 @@ export class AccountComponent implements OnInit {
       error => console.log(error),
     );
   }
-
 }

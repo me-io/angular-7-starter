@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
-import { Tag } from '../../shared/models/tag.model';
+import {Tag} from '../../shared/models/tag.model';
+import {isUndefined} from "util";
 
 @Injectable()
 export class TagService {
@@ -11,8 +12,8 @@ export class TagService {
   constructor(private http: HttpClient) {
   }
 
-  getTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>('/api/tags');
+  getTags(term: string = null): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`/api/tags?q=${term == null ? '' : term}`);
   }
 
   getTagById(_id: String): Observable<Tag> {
@@ -32,11 +33,15 @@ export class TagService {
   }
 
   editTag(tag: Tag): Observable<string> {
-    return this.http.put(`/api/tag/${tag._id}`, tag, { responseType: 'text' });
+    return this.http.put(`/api/tag/${tag._id}`, tag, {responseType: 'text'});
   }
 
   deleteTag(tag: Tag): Observable<string> {
-    return this.http.delete(`/api/tag/${tag._id}`, { responseType: 'text' });
+    return this.http.delete(`/api/tag/${tag._id}`, {responseType: 'text'});
+  }
+
+  getTagPosts(_id: String, page): Observable<Tag> {
+    return this.http.get<Tag>(`/api/tag/${_id}/posts?page=${page == null ? 1 : page}`);
   }
 
 }

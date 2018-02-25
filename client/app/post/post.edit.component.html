@@ -1,59 +1,52 @@
-<app-loading [condition]="isLoading"></app-loading>
-
 <app-toast [message]="toast.message"></app-toast>
-
-<div class="card">
-  <!-- Add Start -->
-  <h4 class="card-header" *ngIf="!isEditing">Add new post</h4>
-  <!-- Add End -->
-
-  <!-- Edit Start -->
-  <h4 class="card-header" *ngIf="isEditing">Edit post</h4>
-  <!-- Edit End -->
-
-  <div class="card-block">
-    <form class="form-inline" [formGroup]="editPostForm" (ngSubmit)="editPost()" style="text-align:center">
-      <div class="form-group">
-        <input class="form-control" type="text" name="name" formControlName="title" placeholder="Title">
-      </div>
-
-      <div class="form-group">
-        <textarea class="form-control" type="text" name="content" formControlName="content"></textarea>
-      </div>
-    </form>
+<div class="container my-4">
+  <div class="text-center">
+    <app-loading [condition]="isLoading"></app-loading>
   </div>
-
-  <div class="card-footer">
-
-    <div class="pull-right" role="group" aria-label="Action">
-
-      <!-- Add Start -->
-      <button type="button" class="btn btn-sm btn-warning " *ngIf="!isEditing" (click)="cancelAdding()">
-        <i class="fa fa-times"></i> Cancel
-      </button>
-
-      <button type="button" class="btn btn-sm btn-success " *ngIf="!isEditing" (click)="addPost()"
-              [disabled]="!editPostForm.valid"><i class="fa fa-floppy-o"></i> Add
-      </button>
-
-      <!-- Add End -->
-
-
-      <!-- Edit Start -->
-      <button type="button" class="btn btn-sm btn-danger " *ngIf="isEditing" (click)="deletePost(post)">
-        <i class="fa fa-trash"></i> Delete
-      </button>
-
-      <button type="button" class="btn btn-sm btn-warning " *ngIf="isEditing" (click)="cancelEditing()">
-        <i class="fa fa-times"></i> Cancel
-      </button>
-
-      <button type="button" class="btn btn-sm btn-primary " *ngIf="isEditing" (click)="editPost()"
-              [disabled]="!editPostForm.valid"><i class="fa fa-floppy-o"></i> Save
-      </button>
-
-      <!-- Edit End -->
+  <div class="card">
+    <h5 class="card-header" *ngIf="!isEditing"><i class="fa fa-plus fa-fw"></i> Create new post</h5>
+    <h5 class="card-header" *ngIf="isEditing"><i class="fa fa-pencil fa-fw"></i> Edit post</h5>
+    <div class="card-body">
+      <form [formGroup]="editPostForm" (ngSubmit)="editPost()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" name="title" formControlName="title" id="title">
+        </div>
+        <div class="form-group">
+          <label>Tags</label>
+          <ng-select [items]="tags"
+                     bindLabel="name"
+                     placeholder="Select tags"
+                     [typeahead]="typeahead"
+                     [multiple]="true"
+                     clearAllText="Clear"
+                     formControlName="tags">
+          </ng-select>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <div [froalaEditor]="options" formControlName="content" name="content" id="content">Hello, Froala!</div>
+        </div>
+        <div *ngIf="!isEditing" class="text-right">
+          <button type="button" class="btn btn-sm btn-link mr-2" *ngIf="!isEditing" (click)="cancelAdding()">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="addPost()" [disabled]="!editPostForm.valid">
+            Save
+          </button>
+        </div>
+        <div *ngIf="isEditing" class="text-right">
+          <button type="button" class="btn btn-sm btn-link " (click)="cancelEditing()">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-sm btn-danger " (click)="deletePost(post)">
+            Delete
+          </button>
+          <button type="button" class="btn btn-sm btn-primary " (click)="editPost()" [disabled]="!editPostForm.valid">
+            Save
+          </button>
+        </div>
+      </form>
     </div>
-
   </div>
 </div>

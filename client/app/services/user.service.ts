@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
-import { User } from '../shared/models/user.model';
+import {User} from '../shared/models/user.model';
 
 @Injectable()
 export class UserService {
@@ -35,11 +35,10 @@ export class UserService {
   }
 
   editUser(user: User): Observable<string> {
-    return this.http.put(`/api/account/user/${user._id}`, user, { responseType: 'text' });
+    return this.http.put(`/api/account/user/${user._id}`, user, {responseType: 'text'});
   }
 
   deleteUser(user: User): Observable<string> {
-    return this.http.delete(`/api/account/user/${user._id}`, { responseType: 'text' });
+    return this.http.delete(`/api/account/user/${user._id}`, {responseType: 'text'});
   }
-
 }

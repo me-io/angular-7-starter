@@ -8,3 +8,21 @@ body {
 .input-group {
   margin-bottom: 15px;
 }
+
+span.tag-color {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 23px;
+  margin-right: 7px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1740px;
+  }
+}
+
+.ng-select-dropdown-outer.bottom {
+  z-index: 1000;
+}

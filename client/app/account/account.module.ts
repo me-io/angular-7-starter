@@ -8,6 +8,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PasswordComponent } from './password.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent,
     LogoutComponent,
     AdminComponent,
+    PasswordComponent,
   ],
   imports: [
     routing,
