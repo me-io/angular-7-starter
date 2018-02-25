@@ -6,12 +6,14 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "dev": "ng serve -pc proxy.conf.js",
+    "dev": "concurrently \"ng serve -pc proxy.conf.js\"",
     "prod": "ng build -aot -prod",
     "test": "ng test",
     "lint": "ng lint",
     "lintbe": "tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "contributors:add": "./node_modules/.bin/all-contributors add",
+    "contributors:generate": "./node_modules/.bin/all-contributors generate"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "@types/mongoose": "^5.0.2",
     "@types/morgan": "^1.7.35",
     "@types/node": "~9.4.6",
+    "all-contributors-cli": "^4.11.0",
     "codelyzer": "~4.1.0",
     "concurrently": "^3.5.1",
     "jasmine-core": "~2.99.1",
