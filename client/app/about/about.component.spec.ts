@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 
-import { AboutComponent } from './about.component';
+import {AboutComponent} from './about.component';
 
 describe('Component: About', () => {
   let component: AboutComponent;
@@ -24,9 +24,8 @@ describe('Component: About', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "About" in h4', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
+  it('should display the string "About" in h5', () => {
+    const el = fixture.debugElement.query(By.css('h5')).nativeElement;
     expect(el.textContent).toContain('About');
   });
-
 });

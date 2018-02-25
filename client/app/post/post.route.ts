@@ -5,7 +5,7 @@ import {PostEditComponent} from './post.edit.component';
 import {PostViewComponent} from "./post.view.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list'},
+  {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: 'list', component: PostListComponent},
   {path: 'edit/:_id', component: PostEditComponent},
   {path: 'view/:_id', component: PostViewComponent},

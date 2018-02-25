@@ -1,7 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import {FooterComponent} from './footer.component';
+import {RouterTestingModule} from "@angular/router/testing";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {SharedModule} from "../shared.module";
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -9,9 +11,12 @@ describe('FooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FooterComponent],
-    })
-      .compileComponents();
+      imports: [
+        SharedModule,
+        RouterTestingModule
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,20 +27,5 @@ describe('FooterComponent', () => {
 
   it('should be created', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should not show the DOM element', () => {
-    const de = fixture.debugElement.query(By.css('div'));
-    expect(de).toBeNull();
-  });
-
-  it('should show the DOM element', () => {
-    component.condition = true;
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-    const de = fixture.debugElement.query(By.css('div'));
-    const el = de.nativeElement;
-    expect(de).toBeDefined();
-    expect(el.textContent).toContain('Footer...');
   });
 });
