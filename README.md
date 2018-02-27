@@ -2,7 +2,7 @@
   <h2 align="center">Angular Full Stack</h2>
   <p align="center">The frontend is generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a>. The backend is made from scratch. Whole stack in <a href="https://www.typescriptlang.org">TypeScript</a>.</p>
   <p align="center">
-    <a href="https://github.com/me-io/angular-2-starter">
+    <a href="https://travis-ci.org/me-io/angular-2-starter">
       <img src="https://img.shields.io/travis/me-io/angular-2-starter/master.svg?style=flat-square" alt="Travis Status">
     </a>
     <a href="LICENSE.md">
@@ -10,6 +10,9 @@
     </a>
     <a href="https://david-dm.org/me-io/angular-2-starter">
       <img src="https://img.shields.io/david/me-io/angular-2-starter.svg?style=flat-square" alt="Dependencies">
+    </a> 
+    <a href="https://david-dm.org/me-io/angular-2-starter?type=dev">
+      <img src="https://img.shields.io/david/dev/me-io/angular-2-starter.svg?style=flat-square" alt="devDependencies">
     </a> 
     <a href="https://www.paypal.me/meabed">
       <img src="https://img.shields.io/badge/paypal-donate-179BD7.svg?style=flat-squares" alt="Donate">
