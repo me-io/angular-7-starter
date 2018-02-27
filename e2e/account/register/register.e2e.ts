@@ -1,5 +1,5 @@
 import {$$, browser} from 'protractor';
 
-export class Login {
+export class Register {
 
 }

@@ -1,24 +1,24 @@
-import {Login} from './login.e2e';
+import {Register} from './register.e2e';
 import {Helper} from "../../helper";
 import {browser, by, element} from "protractor";
 
-describe('Login', () => {
-  let page: Login;
+describe('Register', () => {
+  let page: Register;
   let helper: Helper;
 
   beforeEach(() => {
-    page = new Login();
+    page = new Register();
     helper = new Helper();
 
-    helper.navigateTo('/account/login');
+    helper.navigateTo('/account/register');
   });
 
-  it('should have a login navbar item with active class', () => {
-    expect(helper.getElementByClassName('active')).toBe('Login');
+  it('should have a register navbar item with active class', () => {
+    expect(helper.getElementByClassName('active')).toBe('Register');
   });
 
-  it('should contains Login', function () {
-    expect(helper.getBodyElement('h5', 0)).toBe('Login');
+  it('should contains Register', function () {
+    expect(helper.getBodyElement('h5', 0)).toBe('Register');
   });
 
   it('should have email field', function () {

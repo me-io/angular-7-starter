@@ -1,6 +1,6 @@
 import {Login} from './login.e2e';
 import {Helper} from "../../helper";
-import {browser, by, element} from "protractor";
+import {by, element} from "protractor";
 
 describe('Login', () => {
   let page: Login;
