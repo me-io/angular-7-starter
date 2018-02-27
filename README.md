@@ -8,8 +8,8 @@
     <a href="LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
     </a>
-    <a href="https://david-dm.org/DavideViolante/Angular2-Full-Stack">
-      <img src="https://david-dm.org/DavideViolante/Angular-Full-Stack.svg?style=flat-square" alt="Dependencies">
+    <a href="https://david-dm.org/me-io/angular-2-starter">
+      <img src="https://img.shields.io/david/me-io/angular-2-starter.svg?style=flat-square" alt="Dependencies">
     </a> 
     <a href="https://www.paypal.me/meabed">
       <img src="https://img.shields.io/badge/paypal-donate-179BD7.svg?style=flat-squares" alt="Donate">
