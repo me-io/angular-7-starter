@@ -2,7 +2,7 @@
   <h2 align="center">Angular Full Stack</h2>
   <p align="center">The frontend is generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a>. The backend is made from scratch. Whole stack in <a href="https://www.typescriptlang.org">TypeScript</a>.</p>
   <p align="center">
-    <a href="https://github.com/me-io/angular-2-starter">
+    <a href="https://travis-ci.org/me-io/angular-2-starter">
       <img src="https://img.shields.io/travis/me-io/angular-2-starter/master.svg?style=flat-square" alt="Travis Status">
     </a>
     <a href="LICENSE.md">
