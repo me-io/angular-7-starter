@@ -5,7 +5,7 @@ import { TagEditComponent } from './tag.edit.component';
 import {TagPostListComponent} from "./tag.post.list.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list' },
+  { path: '', redirectTo: 'list', pathMatch: 'full'},
   { path: 'list', component: TagListComponent },
   { path: 'edit/:_id', component: TagEditComponent },
   { path: 'new', component: TagEditComponent },

@@ -2,6 +2,9 @@
   <h2 align="center">Angular Full Stack</h2>
   <p align="center">The frontend is generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a>. The backend is made from scratch. Whole stack in <a href="https://www.typescriptlang.org">TypeScript</a>.</p>
   <p align="center">
+    <a href="https://github.com/me-io/angular-2-starter">
+      <img src="https://img.shields.io/travis/me-io/angular-2-starter/master.svg?style=flat-square" alt="Travis Status">
+    </a>
     <a href="LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
     </a>
@@ -13,7 +16,6 @@
     </a>
   </p>
 </p>
-
 
 ## Prerequisite
 
@@ -36,7 +38,7 @@
   npm i -g @angular/cli
   ```
 3. From project root folder install all the dependencies by running the following command inside your terminal:
-  ```
+  ```bash
   npm install
   ```
 
@@ -46,7 +48,7 @@
 
 By running the following command a window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
 
-```
+```bash
 npm run dev
 ```
 
@@ -82,7 +84,7 @@ npm run prod
 8. Now Edit `.gitignore` and remove line with `/dist` text.
 9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 10. Install the dependencies by running the following command:
-  ```
+  ```bash
   npm install
   ```
 11. Now build your app by running one of the following command:
@@ -110,6 +112,13 @@ npm run prod
 
 ![In Action](https://d2ffutrenqvap3.cloudfront.net/items/1A422k2U0O2R0T2M2j3k/Screen%20Recording%202018-02-25%20at%2012.44%20AM.gif)
 
+## Running tests
+
+Run the following command inside your terminal to execute the unit tests via [Karma](https://karma-runner.github.io/).
+
+```bash
+npm run test
+```
 
 ## Contributors
 
