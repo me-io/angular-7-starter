@@ -21,7 +21,7 @@ export class JwtHelper {
       }
     }
     return this.b64DecodeUnicode(output);
-  };
+  }
 
   b64decode(str) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -44,13 +44,13 @@ export class JwtHelper {
       buffer = chars.indexOf(buffer);
     }
     return output;
-  };
+  }
 
   b64DecodeUnicode(str) {
     return decodeURIComponent(Array.prototype.map.call(this.b64decode(str), function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-  };
+  }
 
   decodeToken(token) {
     const parts = token.split('.');
@@ -62,7 +62,6 @@ export class JwtHelper {
       throw new Error('Cannot decode the token');
     }
     return JSON.parse(decoded);
-
   }
 
 }

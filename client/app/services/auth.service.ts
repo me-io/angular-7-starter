@@ -76,10 +76,9 @@ export class AuthService {
       }
     }
     return initials.toUpperCase();
-  };
+  }
 
   setUserRole = (role) => {
-
     switch (role) {
       case 'super_admin':
         this.isSuperAdmin = true;
@@ -102,7 +101,7 @@ export class AuthService {
       default:
 
     }
-  };
+  }
 
   setCurrentUser(decodedUser: any = {}) {
     this.loggedIn = true;
