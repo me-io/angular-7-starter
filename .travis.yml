@@ -24,3 +24,4 @@ before_script:
 
 script:
   - npm run test -- --single-run=true
+  - npm run lint

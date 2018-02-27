@@ -41,7 +41,7 @@
       }
     ],
     "no-arg": true,
-    "no-bitwise": true,
+    "no-bitwise": false,
     "no-console": [
       true,
       "debug",
@@ -99,7 +99,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "typeof-compare": true,
+    "typeof-compare": false,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
@@ -131,8 +131,8 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "no-access-missing-member": true,
-    "templates-use-public": true,
-    "invoke-injectable": true
+    "no-access-missing-member": false,
+    "templates-use-public": false,
+    "invoke-injectable": false
   }
 }
