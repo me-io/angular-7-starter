@@ -13,15 +13,8 @@
           <input type="text" class="form-control" name="title" formControlName="title" id="title">
         </div>
         <div class="form-group">
-          <label>Tags</label>
-          <ng-select [items]="tags"
-                     bindLabel="name"
-                     placeholder="Select tags"
-                     [typeahead]="typeahead"
-                     [multiple]="true"
-                     clearAllText="Clear"
-                     formControlName="tags">
-          </ng-select>
+          <label for="tags">Tags</label>
+          <input type="text" formControlName="tags" name="tags" id="tags">
         </div>
         <div class="form-group">
           <label for="content">Content</label>

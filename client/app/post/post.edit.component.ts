@@ -1,13 +1,12 @@
-import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
-import {PostService} from './services/post.service';
-import {ToastComponent} from '../shared/toast/toast.component';
-import {ErrFmt} from '../util/helpers/err.helper';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Observable} from "rxjs/Observable";
-import {TagService} from "../tag/services/tag.service";
-import {Post} from "../shared/models/post.model";
+import { Post } from '../shared/models/post.model';
+import { ErrFmt } from '../util/helpers/err.helper';
+import { Observable } from 'rxjs/internal/Observable';
+import { PostService } from './services/post.service';
+import { TagService } from '../tag/services/tag.service';
+import { ToastComponent } from '../shared/toast/toast.component';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -15,40 +14,27 @@ import {Post} from "../shared/models/post.model";
   styleUrls: ['./post.component.scss'],
 })
 export class PostEditComponent implements OnInit, OnDestroy {
-
-  typeahead = new EventEmitter<string>();
-
-  post: Post = {};
   tags = [];
-
+  sub: any;
+  _id: string;
+  post: Post = {};
   isEditing = true;
   isLoading = true;
-  _id: string;
-  sub: any;
-
   editPostForm: FormGroup;
 
   private options: Object = {
     heightMin: 400,
-    placeholderText: 'Edit Content Here'
+    placeholderText: 'Edit Content Here',
   };
 
-  constructor(private postService: PostService,
-              private tagService: TagService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private formBuilder: FormBuilder,
-              public toast: ToastComponent) {
-    this.typeahead
-      .distinctUntilChanged()
-      .debounceTime(200)
-      .switchMap(term => this.loadTags(term))
-      .subscribe(items => {
-        this.tags = items;
-      }, (err) => {
-        console.log(err);
-        this.tags = [];
-      });
+  constructor(
+    private postService: PostService,
+    private tagService: TagService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    public toast: ToastComponent,
+  ) {
   }
 
   ngOnInit() {
@@ -89,9 +75,9 @@ export class PostEditComponent implements OnInit, OnDestroy {
           'tags': data[0].tags.map(tag => {
             return {
               '_id': tag._id,
-              'name': tag.name
+              'name': tag.name,
             };
-          })
+          }),
         });
       },
       error => this.toast.setMessage(ErrFmt(error), 'danger'),

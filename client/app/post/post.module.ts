@@ -8,7 +8,6 @@ import {PostListComponent} from './post.list.component';
 import {PostEditComponent} from './post.edit.component';
 import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
 import {PostViewComponent} from './post.view.component';
-import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import {NgSelectModule} from "@ng-select/ng-select";
     SharedModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    NgSelectModule
   ],
   providers: [
     PostService,

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -14,7 +12,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     let authHeader = req.headers.get('Authorization');
     let authReq = req;
 
@@ -29,14 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     // send the newly created request
-    return next.handle(authReq)
-      .catch((error, caught) => {
-        // intercept the respons error and displace it to the console
-        // console.log('Error Occurred');
-        // console.log(error);
-        // return the error to the method that called it
-        return Observable.throw(error);
-      }) as any;
+    return next.handle(authReq);
   }
 }
 

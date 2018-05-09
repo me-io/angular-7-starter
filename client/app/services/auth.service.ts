@@ -1,19 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {JwtHelper} from '../util/helpers/jwt.helper';
-
-import {UserService} from './user.service';
-import {User} from '../shared/models/user.model';
-
-import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
+import { User } from '../shared/models/user.model';
+import { JwtHelper } from '../util/helpers/jwt.helper';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  loggedIn = false;
-  isSuperAdmin = false;
-  isAdmin = false;
-  isSuperMod = false;
   isMod = false;
+  isAdmin = false;
+  loggedIn = false;
+  isSuperMod = false;
+  isSuperAdmin = false;
   isSupportAdmin = false;
   isSupportAgent = false;
 
@@ -21,8 +19,10 @@ export class AuthService {
 
   currentUser: User = new User();
 
-  constructor(private userService: UserService,
-              private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -31,27 +31,31 @@ export class AuthService {
   }
 
   login(emailAndPassword) {
-    return this.userService.login(emailAndPassword).map(
-      res => {
-        if (res.token) {
-          localStorage.setItem('token', res.token);
-          const decodedUser = this.decodeUserFromToken(res.token);
-          this.setCurrentUser(decodedUser);
-          return this.loggedIn;
-        } else {
-          throw new Error('Invalid Credentials');
-        }
-      },
-    );
+    return this.userService
+      .login(emailAndPassword)
+      .pipe(
+        map(
+          res => {
+            if (res.token) {
+              localStorage.setItem('token', res.token);
+              const decodedUser = this.decodeUserFromToken(res.token);
+              this.setCurrentUser(decodedUser);
+              return this.loggedIn;
+            } else {
+              throw new Error('Invalid Credentials');
+            }
+          },
+        ),
+      );
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.loggedIn = false;
-    this.isSuperAdmin = false;
-    this.isAdmin = false;
-    this.isSuperMod = false;
     this.isMod = false;
+    this.isAdmin = false;
+    this.loggedIn = false;
+    this.isSuperMod = false;
+    this.isSuperAdmin = false;
     this.isSupportAdmin = false;
     this.isSupportAgent = false;
     this.currentUser = new User();
@@ -76,7 +80,7 @@ export class AuthService {
       }
     }
     return initials.toUpperCase();
-  }
+  };
 
   setUserRole = (role) => {
     switch (role) {
@@ -101,7 +105,7 @@ export class AuthService {
       default:
 
     }
-  }
+  };
 
   setCurrentUser(decodedUser: any = {}) {
     this.loggedIn = true;
