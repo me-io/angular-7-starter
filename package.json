@@ -5,12 +5,12 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
-    "dev": "concurrently \"ng serve -pc proxy.conf.js\"",
-    "prod": "ng build -aot -prod",
+    "start": "ng serve --proxy-config proxy.conf.js",
+    "start-prod": "ng serve --prod --aot --proxy-config proxy.conf.js",
+    "build": "ng build --prod --aot --extract-licenses --build-optimizer --named-chunks --stats-json --progress=false",
+    "build-cli": "ng build --prod --aot --extract-licenses --build-optimizer --named-chunks --stats-json --progress=false | perl -pe 's/\\033\\[[\\d;]*m//g'",
     "test": "ng test",
     "lint": "ng lint",
-    "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e",
     "contributors:add": "./node_modules/.bin/all-contributors add",
     "contributors:generate": "./node_modules/.bin/all-contributors generate"
