@@ -39,8 +39,8 @@ describe('Component: App', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "Angular 2 Starter" in .navbar-brand', () => {
+  it('should display the string "Angular 7 Starter" in .navbar-brand', () => {
     const el = fixture.debugElement.query(By.css('.navbar-brand')).nativeElement;
-    expect(el.textContent).toContain('Angular 2 Starter');
+    expect(el.textContent).toContain('Angular 7 Starter');
   });
 });

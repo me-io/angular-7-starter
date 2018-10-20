@@ -17,14 +17,14 @@ describe('Dashboard', () => {
   });
 
   it('should display the navbar correctly', () => {
-    expect(page.getNavbarElement(0)).toEqual('Angular 2 Starter');
+    expect(page.getNavbarElement(0)).toEqual('Angular 7 Starter');
     expect(page.getNavbarElement(1)).toEqual('About');
     expect(page.getNavbarElement(2)).toEqual('Register');
     expect(page.getNavbarElement(3)).toEqual('Login');
   });
 
   it('should display footer correctly', () => {
-    expect(page.getFooter(0)).toEqual('Copyright © Angular 2 Starter 2018');
+    expect(page.getFooter(0)).toEqual('Copyright © Angular 7 Starter 2018');
   });
 
   it('should contain the posts', () => {

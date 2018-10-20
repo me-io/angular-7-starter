@@ -29,7 +29,7 @@
 
 ## Uses
 
-* [Angular 2+](https://angular.io): frontend framework
+* [Angular 7+](https://angular.io): frontend framework
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
 
