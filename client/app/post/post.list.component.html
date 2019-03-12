@@ -48,7 +48,8 @@
         <li class="page-item" [ngClass]="{disabled:posts.current_page === 1}">
           <a class="page-link" (click)="setPage(posts.current_page - 1)">Previous</a>
         </li>
-        <li *ngFor="let page of getRange(posts.last_page)" class="page-item" [ngClass]="{active:posts.current_page === page}">
+        <li *ngFor="let page of getRange(posts.last_page)" class="page-item"
+            [ngClass]="{active:posts.current_page === page}">
           <a class="page-link" (click)="setPage(page)">{{page}}</a>
         </li>
         <li class="page-item" [ngClass]="{disabled:posts.current_page === posts.last_page}">

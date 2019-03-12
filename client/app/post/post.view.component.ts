@@ -1,14 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {ToastComponent} from "../shared/toast/toast.component";
-import {PostService} from "./services/post.service";
-import {ErrFmt} from "../util/helpers/err.helper";
-import {AuthService} from "../services/auth.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ToastComponent } from '../shared/toast/toast.component';
+import { PostService } from './services/post.service';
+import { ErrFmt } from '../util/helpers/err.helper';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-post-view',
   templateUrl: './post.view.component.html',
-  styleUrls: ['./post.view.component.scss']
+  styleUrls: ['./post.view.component.scss'],
 })
 export class PostViewComponent implements OnInit, OnDestroy {
 

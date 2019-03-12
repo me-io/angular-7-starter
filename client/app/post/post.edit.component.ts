@@ -6,7 +6,7 @@ import { TagService } from '../tag/services/tag.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-post',

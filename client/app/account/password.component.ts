@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {UserService} from "../services/user.service";
-import {ToastComponent} from "../shared/toast/toast.component";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss']
+  styleUrls: ['./password.component.scss'],
 })
 export class PasswordComponent implements OnInit {
   isLoading = true;

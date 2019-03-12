@@ -1,16 +1,16 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PostViewComponent} from './post.view.component';
-import {RouterTestingModule} from "@angular/router/testing";
-import {AuthService} from "../services/auth.service";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {SharedModule} from "../shared/shared.module";
-import {UserService} from "../services/user.service";
-import {routing} from "./post.route";
-import {PostListComponent} from "./post.list.component";
-import {PostEditComponent} from "./post.edit.component";
-import {FroalaEditorModule, FroalaViewModule} from "angular-froala-wysiwyg";
-import {PostService} from "./services/post.service";
+import { PostViewComponent } from './post.view.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../services/auth.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
+import { UserService } from '../services/user.service';
+import { routing } from './post.route';
+import { PostListComponent } from './post.list.component';
+import { PostEditComponent } from './post.edit.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { PostService } from './services/post.service';
 
 describe('PostViewComponent', () => {
   let component: PostViewComponent;
@@ -21,7 +21,7 @@ describe('PostViewComponent', () => {
       declarations: [
         PostListComponent,
         PostEditComponent,
-        PostViewComponent
+        PostViewComponent,
       ],
       imports: [
         routing,
@@ -35,7 +35,7 @@ describe('PostViewComponent', () => {
         UserService,
         PostService,
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));

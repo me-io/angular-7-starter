@@ -1,15 +1,15 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TagService} from "./services/tag.service";
-import {ErrFmt} from "../util/helpers/err.helper";
-import {ActivatedRoute, Params} from "@angular/router";
-import {ToastComponent} from "../shared/toast/toast.component";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TagService } from './services/tag.service';
+import { ErrFmt } from '../util/helpers/err.helper';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ToastComponent } from '../shared/toast/toast.component';
 import * as moment from 'moment';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tag-post-list',
   templateUrl: './tag.post.list.component.html',
-  styleUrls: ['./tag.post.list.component.scss']
+  styleUrls: ['./tag.post.list.component.scss'],
 })
 export class TagPostListComponent implements OnInit, OnDestroy {
 

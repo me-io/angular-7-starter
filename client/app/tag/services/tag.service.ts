@@ -12,11 +12,11 @@ export class TagService {
   }
 
   getTags(term: string = null): Observable<Tag[]> {
-    return this.http.get<Tag[]>(`/api/tags?q=${term == null ? '' : term}`);
+    return this.http.get<Tag[]>(`/api/tags?q=${ term == null ? '' : term }`);
   }
 
   getTagById(_id: String): Observable<Tag> {
-    return this.http.get<Tag>(`/api/tag/${_id}`);
+    return this.http.get<Tag>(`/api/tag/${ _id }`);
   }
 
   countTags(): Observable<number> {
@@ -28,12 +28,12 @@ export class TagService {
   }
 
   getTag(tag: Tag): Observable<Tag> {
-    return this.http.get<Tag>(`/api/tag/${tag._id}`);
+    return this.http.get<Tag>(`/api/tag/${ tag._id }`);
   }
 
   editTag(tag: Tag): Observable<string> {
     return this.http.put(
-      `/api/tag/${tag._id}`,
+      `/api/tag/${ tag._id }`,
       tag,
       {
         responseType: 'text',
@@ -43,7 +43,7 @@ export class TagService {
 
   deleteTag(tag: Tag): Observable<string> {
     return this.http.delete(
-      `/api/tag/${tag._id}`,
+      `/api/tag/${ tag._id }`,
       {
         responseType: 'text',
       },
@@ -52,7 +52,7 @@ export class TagService {
 
   getTagPosts(_id: String, page): Observable<Post> {
     return this.http.get<Post>(
-      `/api/tag/${_id}/posts?page=${page == null ? 1 : page}`,
+      `/api/tag/${ _id }/posts?page=${ page == null ? 1 : page }`,
     );
   }
 

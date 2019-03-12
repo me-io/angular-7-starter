@@ -1,4 +1,4 @@
-import {JwtHelper} from "./jwt.helper";
+import { JwtHelper } from './jwt.helper';
 
 describe('JWT helper', () => {
   let jwtHelper;

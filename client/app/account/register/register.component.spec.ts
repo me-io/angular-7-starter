@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
-import {AdminComponent} from "../admin/admin.component";
-import {LoginComponent} from "../login/login.component";
-import {PasswordComponent} from "../password.component";
-import {RouterTestingModule} from "@angular/router/testing";
-import {AuthService} from "../../services/auth.service";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {SharedModule} from "../../shared/shared.module";
-import {AccountComponent} from "../account.component";
-import {LogoutComponent} from "../logout/logout.component";
-import {UserService} from "../../services/user.service";
-import {routing} from "../account.route";
-import {By} from "@angular/platform-browser";
+import { AdminComponent } from '../admin/admin.component';
+import { LoginComponent } from '../login/login.component';
+import { PasswordComponent } from '../password.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../../services/auth.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
+import { AccountComponent } from '../account.component';
+import { LogoutComponent } from '../logout/logout.component';
+import { UserService } from '../../services/user.service';
+import { routing } from '../account.route';
+import { By } from '@angular/platform-browser';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -26,18 +26,18 @@ describe('RegisterComponent', () => {
         PasswordComponent,
         LogoutComponent,
         AdminComponent,
-        LoginComponent
+        LoginComponent,
       ],
       imports: [
         routing,
         SharedModule,
-        RouterTestingModule
+        RouterTestingModule,
       ],
       providers: [
         AuthService,
         UserService,
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));
 

@@ -1,8 +1,8 @@
-import {Compiler, Component, ComponentFactory, ComponentRef, Directive, Input, ModuleWithComponentFactories, NgModule, OnChanges, OnDestroy, ReflectiveInjector, ViewContainerRef} from '@angular/core';
+import { Compiler, Component, ComponentFactory, ComponentRef, Directive, Input, ModuleWithComponentFactories, NgModule, OnChanges, OnDestroy, ReflectiveInjector, ViewContainerRef } from '@angular/core';
 
-import {RouterModule} from '@angular/router';
-import {CommonModule} from '@angular/common';
-import {SharedModule} from '../../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
@@ -10,7 +10,7 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
   };
   const decoratedCmp = Component(metadata)(cmpClass);
 
-  @NgModule(<NgModule>{imports: [CommonModule, RouterModule, SharedModule], declarations: [decoratedCmp]})
+  @NgModule(<NgModule>{ imports: [CommonModule, RouterModule, SharedModule], declarations: [decoratedCmp] })
   class DynamicHtmlModule {
   }
 

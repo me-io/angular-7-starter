@@ -1,17 +1,17 @@
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {ToastComponent} from './toast/toast.component';
-import {LoadingComponent} from './loading/loading.component';
-import {CommonModule} from '@angular/common';
-import {TestComponent} from './test/test.component';
-import {ProgressBarComponent} from './progress-bar/progress-bar.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthInterceptor} from '../util/interceptor/auth.interceptor';
-import {HeaderComponent} from './page/header.component';
-import {RouterModule} from '@angular/router';
-import {FooterComponent} from './page/footer.component';
-import {AccountSidebarComponent} from './account-sidebar/account-sidebar.component';
+import { ToastComponent } from './toast/toast.component';
+import { LoadingComponent } from './loading/loading.component';
+import { CommonModule } from '@angular/common';
+import { TestComponent } from './test/test.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from '../util/interceptor/auth.interceptor';
+import { HeaderComponent } from './page/header.component';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from './page/footer.component';
+import { AccountSidebarComponent } from './account-sidebar/account-sidebar.component';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import {AccountSidebarComponent} from './account-sidebar/account-sidebar.compone
     FooterComponent,
     ProgressBarComponent,
     TestComponent,
-    AccountSidebarComponent
+    AccountSidebarComponent,
   ],
   declarations: [
     ToastComponent,

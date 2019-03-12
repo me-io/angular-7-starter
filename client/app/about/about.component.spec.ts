@@ -1,7 +1,7 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
-import {AboutComponent} from './about.component';
+import { AboutComponent } from './about.component';
 
 describe('Component: About', () => {
   let component: AboutComponent;

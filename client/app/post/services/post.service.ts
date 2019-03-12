@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Post} from '../../shared/models/post.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Post } from '../../shared/models/post.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
@@ -11,11 +11,11 @@ export class PostService {
   }
 
   getPosts(page: number = null): Observable<Post[]> {
-    return this.http.get<Post[]>(`/api/posts?page=${page == null ? 1 : page}`);
+    return this.http.get<Post[]>(`/api/posts?page=${ page == null ? 1 : page }`);
   }
 
   getPostById(_id: String): Observable<Post> {
-    return this.http.get<Post>(`/api/post/${_id}`);
+    return this.http.get<Post>(`/api/post/${ _id }`);
   }
 
   countPosts(): Observable<number> {
@@ -27,15 +27,15 @@ export class PostService {
   }
 
   getPost(post: Post): Observable<Post> {
-    return this.http.get<Post>(`/api/post/${post._id}`);
+    return this.http.get<Post>(`/api/post/${ post._id }`);
   }
 
   editPost(post: Post): Observable<string> {
-    return this.http.put(`/api/post/${post._id}`, post, {responseType: 'text'});
+    return this.http.put(`/api/post/${ post._id }`, post, { responseType: 'text' });
   }
 
   deletePost(post: Post): Observable<string> {
-    return this.http.delete(`/api/post/${post._id}`, {responseType: 'text'});
+    return this.http.delete(`/api/post/${ post._id }`, { responseType: 'text' });
   }
 
 }

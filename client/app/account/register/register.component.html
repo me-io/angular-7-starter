@@ -8,7 +8,7 @@
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="form-group" [ngClass]="setClassEmail()">
               <label for="email"><i class="fa fa-envelope fa-fw"></i> Email address</label>
-              <input type="email" class="form-control" name="email" id="email" formControlName="email" />
+              <input type="email" class="form-control" name="email" id="email" formControlName="email"/>
             </div>
             <div class="form-group" [ngClass]="setClassPassword()">
               <label for="password"><i class="fa fa-key fa-fw"></i> Password</label>

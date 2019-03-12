@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {TagService} from './services/tag.service';
-import {ToastComponent} from '../shared/toast/toast.component';
-import {ErrFmt} from '../util/helpers/err.helper';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { TagService } from './services/tag.service';
+import { ToastComponent } from '../shared/toast/toast.component';
+import { ErrFmt } from '../util/helpers/err.helper';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tag',
@@ -49,7 +49,7 @@ export class TagEditComponent implements OnInit, OnDestroy {
     this.editTagForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      color: ['', Validators.required],
+      color: ['#000', Validators.required],
     });
   }
 
